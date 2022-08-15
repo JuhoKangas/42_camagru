@@ -1,3 +1,10 @@
+<?php
+  session_start();
+
+  $_SESSION['logged_in_user'] = "Mike";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,6 +15,10 @@
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body>
-    <h1>Hey what's up buddy</h1>
+    <?php if ($_SESSION['logged_in_user'] != ""): ?>
+      <h1>Hey what's up <?php echo $_SESSION['logged_in_user'] ?></h1>
+    <?php else: ?>
+      <h1>Hello Stranger</h1>
+    <?php endif; ?>
   </body>
 </html>
