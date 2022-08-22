@@ -13,7 +13,7 @@
   </head>
   <body>
     <h1>Register to post on Camagru.</h1>
-    <form action="../login.php" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
       <div class="form-container">
         <div class="control">
           <label for="email">Email</label>
@@ -31,8 +31,12 @@
           <label for="pwd_dub">Password again</label>
           <input type="password" name="pwd_dub" placeholder="Password again" />
         </div>
-        <button type="submit">submit</button>
+        <input type="submit" value="OK" name="submit">
       </div>
     </form>
   </body>
 </html>
+
+<?php
+  var_dump($_POST);
+?>
