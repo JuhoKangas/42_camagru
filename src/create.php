@@ -1,14 +1,17 @@
 <?php
+  require_once("includes/header.php");
   require_once("functions.php");
 
   $email = $_POST['email'];
   $username = $_POST['username'];
   $pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
-  $pwdAgain = $_POST['pwdAgain'];
+  $errMsg = '';
 
-  if (empty($email) || empty($username) || empty($pwd) || empty($pwdAgain)) {
-    echo "empty fields";
-  } else {
+  if ($_POST['submit'] === 'OK' && $_POST['pwd'] !== $_POST['pwdAgain']) {
+    $errMsg = "Passwords don't match";
+  }
+  
+  if ($_POST['submit'] === 'OK' && $errMsg === '') {
     try {
       $conn = connect();
 
@@ -27,8 +30,6 @@
     $conn = null;
   }
 ?>
-
-<?php include_once("includes/header.php") ?>
 
 <h1>Register to post on Camagru.</h1>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
@@ -49,6 +50,9 @@
           <label for="pwd_dub">Password again</label>
           <input type="password" name="pwdAgain" value="<?php echo isset($_POST['pwdAgain']) ? $_POST['pwdAgain'] : '' ?>" placeholder="Password again" />
         </div>
+        <?php if($errMsg): ?>
+          <small><?php echo $errMsg ?></small>
+        <?php endif; ?>
         <input type="submit" value="OK" name="submit">
       </div>
     </form>
