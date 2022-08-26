@@ -38,7 +38,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles/login.css" />
     <link rel="stylesheet" href="../styles/style.css" />
   </head>
   <body>
@@ -47,7 +46,7 @@
       <div class="form-container">
         <div class="control">
           <label for="email">Email</label>
-          <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Email" />
+          <input type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Email" />
         </div>
         <div class="control">
           <label for="username">Username</label>
