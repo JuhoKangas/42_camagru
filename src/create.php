@@ -1,5 +1,5 @@
 <?php
-  require_once("connection.php");
+  require_once("functions.php");
 
   $email = $_POST['email'];
   $username = $_POST['username'];
