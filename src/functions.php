@@ -23,10 +23,7 @@ function auth($username, $password) {
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password'])) {
-      echo "right password";
       $res = $user;
-    } else {
-      echo "Wrong password";
     }
   } catch (PDOException $e) {
     echo "Verify Error: " . $e->getMessage();

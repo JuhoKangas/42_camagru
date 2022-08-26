@@ -28,21 +28,10 @@
   }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Camagru</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../styles/style.css" />
-  </head>
-  <body>
-    <h1>Register to post on Camagru.</h1>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+<?php include_once("includes/header.php") ?>
+
+<h1>Register to post on Camagru.</h1>
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
       <div class="form-container">
         <div class="control">
           <label for="email">Email</label>
@@ -64,5 +53,5 @@
       </div>
     </form>
     <a href="login.php">Go back to login</a>
-  </body>
-</html>
+
+  <?php include_once("includes/footer.php") ?>
