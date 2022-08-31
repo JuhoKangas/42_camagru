@@ -17,3 +17,4 @@
     <link rel="stylesheet" href="../styles/style.css" />
   </head>
   <body>
+  <img src="../../img/camagru-logo.svg" alt="camagru logo" />
