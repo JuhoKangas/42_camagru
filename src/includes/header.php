@@ -17,4 +17,12 @@
     <link rel="stylesheet" href="../styles/style.css" />
   </head>
   <body>
-  <img src="../../img/camagru-logo.svg" alt="camagru logo" />
+    <nav>
+      <div class="navbar">
+        <img src="../../img/camagru-logo.svg" alt="camagru logo" />
+        <div class="nav-btns">
+          <button>Log in</button>
+          <button>Sign up</button>
+        </div>
+      </div>
+    </nav>

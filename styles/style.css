@@ -8,15 +8,42 @@ html {
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e9f6f1;
+}
+
+.navbar {
+  height: 60px;
+  padding: 0 10%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.navbar img {
+  height: 50%;
+}
+
+.nav-btns {
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
   max-width: 25%;
   margin: auto;
+  gap: 1rem;
 }
 
 .control {
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
 }
