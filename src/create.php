@@ -31,7 +31,7 @@
   }
 ?>
 
-<h1>Register to post on Camagru.</h1>
+<h1 class="title">Register to post on Camagru.</h1>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
       <div class="form-container">
         <div class="control">
@@ -56,6 +56,5 @@
         <input type="submit" value="OK" name="submit">
       </div>
     </form>
-    <a href="login.php">Go back to login</a>
 
   <?php include_once("includes/footer.php") ?>

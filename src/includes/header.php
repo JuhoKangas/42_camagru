@@ -21,8 +21,8 @@
       <div class="navbar">
         <img src="../../img/camagru-logo.svg" alt="camagru logo" />
         <div class="nav-btns">
-          <a href="#"><button class="btn btn-main">Log in</button></a>
-          <a href="#"><button class="btn">Sign up</button></a>
+          <a href="/src/login.php"><button class="btn btn-main">Log in</button></a>
+          <a href="/src/create.php"><button class="btn">Sign up</button></a>
         </div>
       </div>
     </nav>

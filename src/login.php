@@ -12,7 +12,7 @@
   ?>
 
 
-<h1>Login to Camagru.</h1>
+<h1 class="title">Login to Camagru.</h1>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
   <div class="form-container">
     
@@ -31,6 +31,5 @@
     <input type="submit" value="OK" name="submit">
   </div>
 </form>
-<a href="create.php">No user? Create one here</a>
 
 <?php include_once("includes/footer.php") ?>
