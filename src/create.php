@@ -11,11 +11,11 @@
     $errMsg = "Passwords don't match";
   }
 
-  if (!(usernameAvailable($username))) {
+  if ($POST['submit'] === 'OK' && !(usernameAvailable($username))) {
     $errMsg = "Username is taken";
   }
 
-  if (!(emailAvailable($email))) {
+  if ($POST['submit'] === 'OK' && !(emailAvailable($email))) {
     $errMsg = "Email is already in use";
   }
   
