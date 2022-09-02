@@ -12,7 +12,7 @@
   ?>
 
 
-<h1 class="title">Login to Camagru.</h1>
+<h1 class="title text-center">Login to Camagru.</h1>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
   <div class="form-container">
     
@@ -28,7 +28,7 @@
       <input type="password" name="pwd" value="<?php echo isset($_POST['pwd']) ? $_POST['pwd'] : '' ?>" placeholder="Password" />
     </div>
     
-    <input type="submit" value="OK" name="submit">
+    <button class="btn btn-main btn-big mt-2" type="submit" value="OK" name="submit">Login</button>
   </div>
 </form>
 
