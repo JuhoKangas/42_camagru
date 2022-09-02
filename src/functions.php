@@ -31,4 +31,59 @@ function auth($username, $password) {
   return $res;
 }
 
+function createUser($username, $email, $pwd) {
+  try {
+    $conn = connect();
+
+    $stmt = $conn->prepare("INSERT INTO userinfo (username, email, password)
+    VALUES (:username, :email, :password)");
+    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $pwd);
+
+    $stmt->execute();
+
+    echo "user created";
+  } catch(PDOException $e){
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+function usernameAvailable($username) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT username FROM userinfo WHERE username = ?");
+    $stmt->execute([$username]);
+    $user = $stmt->fetch();
+
+    if ($user) {
+      return FALSE;
+    } else {
+      return TRUE;
+    }
+  } catch (PDOException $e) {
+    echo "usernameAvailable Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+function emailAvailable($email) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT email FROM userinfo WHERE email = ?");
+    $stmt->execute([$email]);
+    $user = $stmt->fetch();
+
+    if ($user) {
+      return FALSE;
+    } else {
+      return TRUE;
+    }
+  } catch (PDOException $e) {
+    echo "emailAvailable Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
 ?>

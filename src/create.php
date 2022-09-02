@@ -10,25 +10,19 @@
   if ($_POST['submit'] === 'OK' && $_POST['pwd'] !== $_POST['pwdAgain']) {
     $errMsg = "Passwords don't match";
   }
+
+  if (!(usernameAvailable($username))) {
+    $errMsg = "Username is taken";
+  }
+
+  if (!(emailAvailable($email))) {
+    $errMsg = "Email is already in use";
+  }
   
   if ($_POST['submit'] === 'OK' && $errMsg === '') {
-    try {
-      $conn = connect();
-
-      $stmt = $conn->prepare("INSERT INTO userinfo (username, email, password)
-      VALUES (:username, :email, :password)");
-      $stmt->bindParam(':username', $username);
-      $stmt->bindParam(':email', $email);
-      $stmt->bindParam(':password', $pwd);
-
-      $stmt->execute();
-
-      echo "user created";
-    } catch(PDOException $e){
-      echo "Error: " . $e->getMessage();
-    }
-    $conn = null;
+    createUser($username, $email, $pwd);
   }
+
 ?>
 
 <h1 class="title text-center">Sign up to post on<br>Camagru.</h1>
