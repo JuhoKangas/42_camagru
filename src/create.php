@@ -31,29 +31,44 @@
   }
 ?>
 
-<h1 class="title">Register to post on Camagru.</h1>
+<h1 class="title text-center">Sign up to post on<br>Camagru.</h1>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
       <div class="form-container">
         <div class="control">
           <label for="email">Email</label>
-          <input type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Email" />
+          <input type="email"
+                  name="email"
+                  value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>"
+                  placeholder="a.honnold@climb.com" />
         </div>
         <div class="control">
           <label for="username">Username</label>
-          <input type="text" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : '' ?>" placeholder="username" />
+          <input type="text"
+                  name="username"
+                  value="<?php echo isset($_POST['username']) ? $_POST['username'] : '' ?>"
+                  placeholder="assblaster69" />
         </div>
         <div class="control">
           <label for="pwd">Password</label>
-          <input type="password" name="pwd" value="<?php echo isset($_POST['pwd']) ? $_POST['pwd'] : '' ?>" placeholder="Password" />
+          <input type="password"
+                  name="pwd"
+                  value="<?php echo isset($_POST['pwd']) ? $_POST['pwd'] : '' ?>"
+                  placeholder="Pleaseusepassphrase" />
+                  <div class="sub-text text-center px-4 py-2">
+                    <p>Password must be N characters long and contain letters, numbers, and symbols.</p>
+                  </div>
         </div>
         <div class="control">
           <label for="pwd_dub">Password again</label>
-          <input type="password" name="pwdAgain" value="<?php echo isset($_POST['pwdAgain']) ? $_POST['pwdAgain'] : '' ?>" placeholder="Password again" />
+          <input type="password"
+                  name="pwdAgain"
+                  value="<?php echo isset($_POST['pwdAgain']) ? $_POST['pwdAgain'] : '' ?>"
+                  placeholder="Password again" />
         </div>
         <?php if($errMsg): ?>
           <small><?php echo $errMsg ?></small>
         <?php endif; ?>
-        <input type="submit" value="OK" name="submit">
+        <button class="btn btn-main btn-big mt-5" type="submit" value="OK" name="submit">Sign up</button>
       </div>
     </form>
 
