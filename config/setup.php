@@ -25,6 +25,8 @@ try {
     username VARCHAR(50) NOT NULL,
     email VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
+    activated BOOLEAN NOT NULL DEFAULT 0,
+    notif_stat BOOLEAN NOT NULL DEFAULT 1,
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   )";
   $conn->exec($sql);
