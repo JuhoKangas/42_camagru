@@ -35,11 +35,14 @@ function createUser($username, $email, $pwd) {
   try {
     $conn = connect();
 
-    $stmt = $conn->prepare("INSERT INTO userinfo (username, email, password)
-    VALUES (:username, :email, :password)");
+    $unique_token = hash("md5", $username);
+
+    $stmt = $conn->prepare("INSERT INTO userinfo (username, email, password, unique_token)
+    VALUES (:username, :email, :password, :unique_token)");
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':password', $pwd);
+    $stmt->bindParam(':unique_token', $unique_token);
 
     $stmt->execute();
 

@@ -27,6 +27,7 @@ try {
     `password` VARCHAR(255) NOT NULL,
     activated BOOLEAN NOT NULL DEFAULT 0,
     notif_stat BOOLEAN NOT NULL DEFAULT 1,
+    unique_token VARCHAR(255) NOT NULL,
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   )";
   $conn->exec($sql);
