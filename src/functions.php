@@ -46,7 +46,6 @@ function createUser($username, $email, $pwd) {
 
     $stmt->execute();
 
-    echo "user created";
   } catch(PDOException $e){
     echo "Error: " . $e->getMessage();
   }
