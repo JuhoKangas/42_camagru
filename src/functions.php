@@ -35,7 +35,7 @@ function createUser($username, $email, $pwd) {
   try {
     $conn = connect();
 
-    $unique_token = hash("md5", $username);
+    $unique_token = bin2hex(random_bytes(15));
 
     $stmt = $conn->prepare("INSERT INTO userinfo (username, email, password, unique_token)
     VALUES (:username, :email, :password, :unique_token)");
