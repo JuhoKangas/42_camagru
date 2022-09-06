@@ -12,6 +12,7 @@
   ?>
 
 
+<div class="content">
 <h1 class="title text-center">Login to Camagru.</h1>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
   <div class="form-container">
@@ -31,5 +32,6 @@
     <button class="btn btn-main btn-big mt-2" type="submit" value="OK" name="submit">Login</button>
   </div>
 </form>
+</div>
 
 <?php include_once("includes/footer.php") ?>

@@ -1,5 +1,5 @@
 <footer>
-	<div class="footer-text">
+	<div class="footer-text py-3">
 		Juho Kangas 2022
 	</div>
 </footer>

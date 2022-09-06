@@ -26,6 +26,7 @@
 
 ?>
 
+<div class="content">
 <h1 class="title text-center">Sign up to post on<br>Camagru.</h1>
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
       <div class="form-container">
@@ -66,5 +67,6 @@
         <button class="btn btn-main btn-big mt-5" type="submit" value="OK" name="submit">Sign up</button>
       </div>
     </form>
+</div>
 
   <?php include_once("includes/footer.php") ?>
