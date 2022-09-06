@@ -29,7 +29,7 @@
       <input type="password" name="pwd" value="<?php echo isset($_POST['pwd']) ? $_POST['pwd'] : '' ?>" placeholder="Password" />
     </div>
     
-    <button class="btn btn-main btn-big mt-2" type="submit" value="OK" name="submit">Login</button>
+    <button class="btn btn-main btn-big mt-4" type="submit" value="OK" name="submit">Login</button>
   </div>
 </form>
 </div>
