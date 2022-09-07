@@ -370,6 +370,10 @@ body {
   text-align: center;
 }
 
+.text-warning {
+  color: #d06262 !important;
+}
+
 /* TITLES */
 
 .title {
