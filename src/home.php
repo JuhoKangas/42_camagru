@@ -4,9 +4,16 @@
   //   header("location: login.php");
   // }
 ?>
-  <div class="content d-flex align-center d-column">
-    <h1 class="title">Welcome to the fucking shitshow <?php echo $_SESSION['logged_in_user'] ?></h1>
-    <br>
+  <div class="content px-4">
+
+    <div class="card">
+      <div class="card-top"></div>
+      <div class="card-img"></div>
+      <div class="card-likes"></div>
+      <div class="card-comments-list"></div>
+      <div class="card-comment"></div>
+    </div>
+    
     <a href="logout.php">logout</a>
   </div>
-  <?php require_once("includes/footer.php") ?>
+<?php require_once("includes/footer.php") ?>
