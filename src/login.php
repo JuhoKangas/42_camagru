@@ -5,7 +5,7 @@
   $loginErr = '';
 
   if ($_POST['submit'] === 'OK') {
-    if (!user_active($_POST['username'])) {
+    if (find_by_username($_POST['username']) && !user_active($_POST['username'])) {
       $loginErr = 'This account has not yet been activated, please check your email!';
     } else if (login_user($_POST['username'], $_POST['pwd'])) {
       header("location: home.php");
