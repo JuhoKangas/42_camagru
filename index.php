@@ -3,9 +3,9 @@
   require_once("config/setup.php");
 
   if (isset($_SESSION['logged_in_user'])) {
-    header("Location: /src/home.php");
+    header("Location: ./src/home.php");
   } else {
-    header('Location: /src/login.php');
+    header('Location: ./src/login.php');
   }
 
 ?>
