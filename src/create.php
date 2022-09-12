@@ -21,7 +21,7 @@
   
   if ($_POST['submit'] === 'OK' && $errMsg === '') {
     createUser($username, $email, $pwd);
-    header("Location: /src/check_email.php");
+    header("Location: ./check_email.php");
   }
 
 ?>
