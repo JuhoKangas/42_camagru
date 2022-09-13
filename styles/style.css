@@ -27,7 +27,7 @@ body {
 
 .content {
 	flex-grow: 1;
-	padding: 2rem 0;
+	padding: 2rem 1%;
 	display: flex;
 	flex-direction: column;
 }
@@ -470,13 +470,13 @@ footer {
 
 .cards-container {
 	display: flex;
-	padding: 0 4px;
+	padding: 0 10px;
 	justify-content: center;
 }
 
 .card-column {
 	flex: 0 0 380px;
-	padding: 0 4px;
+	padding: 0 10px;
 }
 
 .card {
@@ -484,7 +484,7 @@ footer {
 	border: 1px solid #000;
 	border-radius: 8px;
 	width: 100%;
-	margin: 10px auto;
+	margin: 20px auto;
 }
 
 .card-header {
