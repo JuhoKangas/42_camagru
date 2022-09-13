@@ -466,12 +466,39 @@ footer {
 
 /* CARDS */
 
+.cards-container {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0 4px;
+}
+
+.card-column {
+	flex: 25%;
+	max-width: 25%;
+	padding: 0 4px;
+}
+
+@media screen and (max-width: 1400px) {
+	.card-column {
+		flex: 50%;
+		max-width: 50%;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.card-column {
+		flex: 100%;
+		max-width: 100%;
+	}
+}
+
 .card {
 	background: #fff;
 	border: 1px solid #000;
 	border-radius: 8px;
 	width: 100%;
 	max-width: 375px;
+	margin: 10px 0;
 }
 
 .card-header {
