@@ -27,7 +27,7 @@ body {
 
 .content {
   flex-grow: 1;
-  padding: 1rem 10rem;
+  padding: 2rem 10rem;
 }
 
 /* UTILITY CLASSES */

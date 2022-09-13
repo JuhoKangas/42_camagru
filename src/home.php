@@ -6,7 +6,7 @@
 ?>
   <div class="content">
 
-    <div class="card mt-5">
+    <div class="card">
       <div class="card-header">
         <p class="card-username">username</p>
         <p class="card-time">39m ago</p>
@@ -14,9 +14,9 @@
       <div class="card-img"></div>
         <img src="../img/john-o-nolan-6f_ANCcbj3o-unsplash.jpg" alt="" width="100%">
       <div class="card-likes">
-        <i class="fa-regular fa-heart"></i>
+        <img src="../img/icons/heart_vector.svg" alt="heart">
         <p>256</p>
-        <!-- <i class="fa-solid fa-heart"></i> -->
+        <!-- <img src="../img/icons/heart_filled.svg" alt="heart filled"> -->
         <i class="fa-regular fa-comment"></i>
         <p>9</p>
         <i class="fa-solid fa-share-nodes"></i>
