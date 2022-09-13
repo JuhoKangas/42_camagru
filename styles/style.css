@@ -27,7 +27,9 @@ body {
 
 .content {
 	flex-grow: 1;
-	padding: 2rem 13%;
+	padding: 2rem 0;
+	display: flex;
+	flex-direction: column;
 }
 
 /* UTILITY CLASSES */
@@ -468,28 +470,13 @@ footer {
 
 .cards-container {
 	display: flex;
-	flex-wrap: wrap;
 	padding: 0 4px;
+	justify-content: center;
 }
 
 .card-column {
-	flex: 25%;
-	max-width: 25%;
+	flex: 0 0 380px;
 	padding: 0 4px;
-}
-
-@media screen and (max-width: 1400px) {
-	.card-column {
-		flex: 50%;
-		max-width: 50%;
-	}
-}
-
-@media screen and (max-width: 700px) {
-	.card-column {
-		flex: 100%;
-		max-width: 100%;
-	}
 }
 
 .card {
@@ -497,8 +484,7 @@ footer {
 	border: 1px solid #000;
 	border-radius: 8px;
 	width: 100%;
-	max-width: 375px;
-	margin: 10px 0;
+	margin: 10px auto;
 }
 
 .card-header {
@@ -548,4 +534,27 @@ footer {
 	display: flex;
 	gap: 0.3rem;
 	margin-top: 0.7rem;
+}
+
+@media screen and (max-width: 1500px) {
+	.cards-container {
+		flex-wrap: wrap;
+		padding: 0 7%;
+	}
+
+	.card-column {
+		flex: 50%;
+		max-width: 50%;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.card-column {
+		flex: 100%;
+		max-width: 100%;
+	}
+
+	.cards-container {
+		padding: 0;
+	}
 }
