@@ -388,15 +388,9 @@
         </div>
       </div>
 
-      
-      
-    
-      
-      
-    
     </div>
 
     
-    <!-- <a href="logout.php">logout</a> -->
+    <a href="upload.php">upload</a>
   </div>
 <?php require_once("includes/footer.php") ?>
