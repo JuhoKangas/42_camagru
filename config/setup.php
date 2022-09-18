@@ -36,5 +36,18 @@ try {
   echo $sql . "<br>" . $e->getMessage();
 }
 
+try {
+  $sql = "CREATE TABLE IF NOT EXISTS user_images (
+    id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    uploader_id INT(11) NOT NULL,
+    img_path VARCHAR(255) NOT NULL,
+    upload_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  )";
+  $conn->exec($sql);
+  echo "user_images created";
+} catch (PDOException $e) {
+  echo $sql . "<br>" . $e->getMessage();
+}
+
 $conn = null;
 ?> 
