@@ -1,4 +1,5 @@
 <?php
+
 $DB_DSN = 'mysql:host=localhost;dbname=camagru_db';
 $DB_USER = 'root';
 $DB_PASSWORD = '123123';
@@ -85,7 +86,7 @@ function emailAvailable(string $email): bool {
 function find_by_username(string $username) {
   try {
     $conn = connect();
-    $stmt = $conn->prepare("SELECT username, password, email, activated FROM userinfo WHERE username=:username");
+    $stmt = $conn->prepare("SELECT username, id, password, email, activated FROM userinfo WHERE username=:username");
     $stmt->bindValue(":username", $username);
     $stmt->execute();
   
@@ -106,7 +107,8 @@ function login_user(string $username, string $password): bool {
     $user = find_by_username($username);
 
     if ($user && password_verify($password, $user['password'])) {
-      // Prevent session fixation attack
+
+      //prevent session fixation attack
       session_regenerate_id();
 
       $_SESSION['logged_in_user'] = $user['username'];
@@ -133,6 +135,21 @@ function activate_user($email, $unique_token) {
   } catch (PDOException $e) {
     echo $e->getMessage();
   }
+  $conn = null;
+}
+
+function uploadPicture($user_id, $img_path) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("INSERT INTO user_images (uploader_id, img_path) VALUES (:uploader_id, :img_path)");
+    $stmt->bindParam(':uploader_id', $user_id);
+    $stmt->bindParam(':img_path', $img_path);
+
+    $stmt->execute();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
 }
 
 ?>
