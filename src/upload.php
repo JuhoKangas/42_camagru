@@ -47,6 +47,12 @@
     <input type="submit" value="Upload picture" name="submit">
   </form>
 
+  <button id="start-camera">Start Camera</button>
+  <video id="video" width="320" height="240" autoplay></video>
+  <button id="click-photo">Click Photo</button>
+  <button id="stop-webcam">Stop webcam</button>
+  <canvas id="canvas" width="320px" height="240px"></canvas>
+
 </div>
 
 <?php require_once('includes/footer.php'); ?>
