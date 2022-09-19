@@ -42,17 +42,24 @@
 
 <div class="content">
 
+  <div class="web-photo">
+    <button id="start-camera">Start Camera</button>
+    <video id="video" width="320" height="240" autoplay></video>
+    <button id="click-photo">Click Photo</button>
+
+    <form action="upload_webcam.php" method="post" enctype="multipart/form-data">
+      <input name="upload-button" type="submit" value="Submit">
+      <input id="webcam-picture" type="hidden" name="webcam_picture" value="">
+    </form>
+
+    <button id="stop-webcam">Stop webcam</button>
+    <canvas id="canvas" width="320" height="240"></canvas>
+  </div>
+  
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data" >
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload picture" name="submit">
   </form>
-
-  <button id="start-camera">Start Camera</button>
-  <video id="video" width="320" height="240" autoplay></video>
-  <button id="click-photo">Click Photo</button>
-  <button id="stop-webcam">Stop webcam</button>
-  <canvas id="canvas" width="320px" height="240px"></canvas>
-
 </div>
 
 <?php require_once('includes/footer.php'); ?>
