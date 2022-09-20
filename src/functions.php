@@ -91,7 +91,7 @@ function emailAvailable(string $email): bool {
 function find_by_username(string $username) {
   try {
     $conn = connect();
-    $stmt = $conn->prepare("SELECT username, id, password, email, activated FROM userinfo WHERE username=:username");
+    $stmt = $conn->prepare("SELECT * FROM userinfo WHERE username=:username");
     $stmt->bindValue(":username", $username);
     $stmt->execute();
   
