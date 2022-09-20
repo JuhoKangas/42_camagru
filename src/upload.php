@@ -2,7 +2,7 @@
   require_once('includes/header.php');
   require_once('functions.php');
 
-  $imgID = bin2hex(random_bytes(5));
+  $imgID = uniqid("img_");
   $uploadDir = "../img/uploads/";
   $fileType = strtolower(pathinfo($_FILES['fileToUpload']['name'],PATHINFO_EXTENSION));
   $filename = "$imgID.$fileType";

@@ -4,7 +4,7 @@
 
 	$data_url = $_POST['webcam_picture'];
 	$target_dir = "../img/uploads/";
-	$img_id = bin2hex(random_bytes(5));
+	$img_id = uniqid("img_");
 	$filename = $img_id . '.png';
 	$target_file = $target_dir . $filename;
 
