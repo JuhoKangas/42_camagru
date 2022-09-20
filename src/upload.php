@@ -2,10 +2,11 @@
   require_once('includes/header.php');
   require_once('functions.php');
 
-  $imgID = bin2hex(random_bytes(4));
+  $imgID = bin2hex(random_bytes(5));
   $uploadDir = "../img/uploads/";
   $fileType = strtolower(pathinfo($_FILES['fileToUpload']['name'],PATHINFO_EXTENSION));
-  $targetFile = $uploadDir . $imgID . ".$fileType";
+  $filename = "$imgID.$fileType";
+  $targetFile = $uploadDir . $filename;
   $uploadOk = 1;
   $errMsg = "";
 
@@ -28,7 +29,7 @@
     } else {
       if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $targetFile)) {
         echo "picture uploaded";
-        uploadPicture($_SESSION['user_id'], $targetFile);
+        uploadPicture($_SESSION['user_id'], $filename);
       }
       else {
         echo "There was a problem uploading the picture";
