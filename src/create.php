@@ -2,26 +2,28 @@
   require_once("includes/header.php");
   require_once("functions.php");
 
-  $email = $_POST['email'];
-  $username = $_POST['username'];
-  $pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
   $errMsg = '';
-
-  if ($_POST['submit'] === 'OK' && $_POST['pwd'] !== $_POST['pwdAgain']) {
-    $errMsg = "Passwords don't match";
-  }
-
-  if ($_POST['submit'] === 'OK' && !(usernameAvailable($username))) {
-    $errMsg = "Username is taken";
-  }
-
-  if ($_POST['submit'] === 'OK' && !(emailAvailable($email))) {
-    $errMsg = "Email is already in use";
-  }
+  if ($_POST) {
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
   
-  if ($_POST['submit'] === 'OK' && $errMsg === '') {
-    createUser($username, $email, $pwd);
-    header("Location: ./check_email.php");
+    if ($_POST['submit'] === 'OK' && $_POST['pwd'] !== $_POST['pwdAgain']) {
+      $errMsg = "Passwords don't match";
+    }
+  
+    if ($_POST['submit'] === 'OK' && !(usernameAvailable($username))) {
+      $errMsg = "Username is taken";
+    }
+  
+    if ($_POST['submit'] === 'OK' && !(emailAvailable($email))) {
+      $errMsg = "Email is already in use";
+    }
+    
+    if ($_POST['submit'] === 'OK' && $errMsg === '') {
+      createUser($username, $email, $pwd);
+      header("Location: ./check_email.php");
+    }
   }
 
 ?>

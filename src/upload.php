@@ -4,9 +4,11 @@
 
   $imgID = uniqid("img_");
   $uploadDir = "../img/uploads/";
-  $fileType = strtolower(pathinfo($_FILES['fileToUpload']['name'],PATHINFO_EXTENSION));
-  $filename = "$imgID.$fileType";
-  $targetFile = $uploadDir . $filename;
+  if ($_FILES) {
+    $fileType = strtolower(pathinfo($_FILES['fileToUpload']['name'],PATHINFO_EXTENSION));
+    $filename = "$imgID.$fileType";
+    $targetFile = $uploadDir . $filename;
+  }
   $uploadOk = 1;
   $errMsg = "";
 
