@@ -44,7 +44,7 @@ function createUser(string $username, string $email, string $pwd): void {
 
     $stmt->execute();
 
-    send_activation_email($email, $unique_token);
+    // send_activation_email($email, $unique_token);
 
   } catch(PDOException $e){
     echo "Error: " . $e->getMessage();
