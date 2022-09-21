@@ -376,7 +376,7 @@ body {
 }
 
 .btn-icon {
-  background: none;
+  background: none !important;
   cursor: pointer;
 }
 
