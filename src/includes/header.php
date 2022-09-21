@@ -17,7 +17,6 @@
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" />
       <link rel="stylesheet" href="../styles/style.css" />
       <!-- FONT AWESOME -->
-      <script src="https://kit.fontawesome.com/f1f997944d.js" crossorigin="anonymous"></script>
     </head>
     <body>
       <nav>
