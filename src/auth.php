@@ -9,8 +9,9 @@
 
 <?php if(activate_user($email, $unique_token)): ?>
   <div class="content d-flex d-column align-center">
-    <h1 class="title">You have now been verified!</h1>
-    <p>Happy posting!</p>
+    <img src="../img/office2.png" width="250" alt="">
+    <h1 class="title pt-2">You have been verified!</h1>
+    <a href="home.php"><div class="btn btn-main btn-big">Start Posting</div></a>
   </div>
 <?php else: ?>
     <div class="content d-flex align-center">
