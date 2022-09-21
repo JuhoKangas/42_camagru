@@ -357,9 +357,17 @@ body {
   padding: 0.5rem 1rem;
 }
 
+.btn:hover {
+  background-color: #d0d0d0;
+}
+
 .btn-main {
   color: #fff;
   background-color: #1f6f57;
+}
+
+.btn-main:hover {
+  background-color: #3d997d;
 }
 
 .btn-big {
