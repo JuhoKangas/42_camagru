@@ -520,6 +520,10 @@ footer {
   font-size: 12px;
 }
 
+.card-img img {
+  width: 100%;
+}
+
 .card-likes {
   display: flex;
   padding: 0.7rem 1rem;
@@ -535,7 +539,7 @@ footer {
   margin: 0 1rem 0 0.5rem;
 }
 
-.card-likes i:last-child {
+.card-likes img:last-child {
   margin-left: auto;
 }
 
