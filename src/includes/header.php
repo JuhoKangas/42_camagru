@@ -23,7 +23,6 @@
       <nav>
         <div class="navbar">
           <img src="../img/camagru-logo.svg" alt="camagru logo" />
-            <!-- TODO ADD LOGGED IN BUTTONS -->
           <div class="buttons-middle">
             <a href="home.php"><button class="btn btn-icon"><img src="../img/icons/home.svg" alt=""></button></a>
             <a href="upload.php"><button class="btn btn-icon"><img src="../img/icons/add_img.svg" alt=""></button></a>
