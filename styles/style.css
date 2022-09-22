@@ -557,6 +557,13 @@ footer {
   margin-top: 0.7rem;
 }
 
+.stickers {
+  display: flex;
+  height: 10%;
+  gap: 2rem;
+}
+
+/* MEDIA QUERYS */
 @media screen and (max-width: 1500px) {
   .cards-container {
     flex-wrap: wrap;
