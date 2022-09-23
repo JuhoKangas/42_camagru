@@ -44,6 +44,10 @@ body {
   flex-direction: column;
 }
 
+.d-none {
+  display: none;
+}
+
 /* ALIGNMENTS */
 
 .align-center {
@@ -561,6 +565,18 @@ footer {
   display: flex;
   height: 10%;
   gap: 2rem;
+}
+
+/* IMAGE UPLOAD */
+
+.preview {
+  position: relative;
+}
+
+.preview #canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* MEDIA QUERYS */
