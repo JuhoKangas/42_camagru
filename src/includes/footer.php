@@ -3,6 +3,5 @@
 		Juho Kangas 2022
 	</div>
 </footer>
-<script src="../js/app.js"></script>
 </body>
 </html>

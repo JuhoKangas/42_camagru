@@ -424,7 +424,5 @@
 
     </div>
 
-    
-    <a href="upload.php">upload</a>
   </div>
 <?php require_once("includes/footer.php") ?>
