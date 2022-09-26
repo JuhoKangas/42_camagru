@@ -53,7 +53,7 @@
           list(, $data_url) = explode(',', $data_url);
           $decoded_url = base64_decode($data_url);
           $src = imagecreatefromstring($decoded_url);
-          imagecopy($dst, $src, 0, 0, 25, 30, 700, 500);
+          imagecopy($dst, $src, 0, 0, 0, 0, $new_width, $new_height);
         }
 
         if ($fileType === 'jpg' || $filetype === 'jpeg') {
@@ -67,10 +67,6 @@
       }
       uploadPicture($_SESSION['user_id'], $filename);
       }
-
-  }
-
-  function resizeImg($image, $maxDim) {
 
   }
 
@@ -124,19 +120,19 @@ const addSticker = (sticker) => {
 
 	switch (sticker) {
 		case "sticker1":
-			ctx.drawImage(selectedSticker, 30, 40, selectedSticker.width, selectedSticker.height)
+			ctx.drawImage(selectedSticker, 80, 40, selectedSticker.width, selectedSticker.height)
 			break;
 		case "sticker2":
-			ctx.drawImage(selectedSticker, 500, 40, selectedSticker.width, selectedSticker.height)
+			ctx.drawImage(selectedSticker, 550, 40, selectedSticker.width, selectedSticker.height)
 			break;
 		case "sticker3":
-			ctx.drawImage(selectedSticker, 30, 500, selectedSticker.width, selectedSticker.height)
+			ctx.drawImage(selectedSticker, 80, 400, selectedSticker.width, selectedSticker.height)
 			break;
 		case "sticker4":
-			ctx.drawImage(selectedSticker, 250, 250, selectedSticker.width, selectedSticker.height)
+			ctx.drawImage(selectedSticker, 300, 250, selectedSticker.width, selectedSticker.height)
 			break;
 		case "sticker5":
-			ctx.drawImage(selectedSticker, 500, 500, selectedSticker.width, selectedSticker.height)
+			ctx.drawImage(selectedSticker, 550, 400, selectedSticker.width, selectedSticker.height)
 			break;
 	
 		default:
