@@ -36,6 +36,7 @@ try {
   echo $sql . "</br>" . $e->getMessage();
 }
 
+// Create user_images table
 try {
   $sql = "CREATE TABLE IF NOT EXISTS user_images (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -49,6 +50,7 @@ try {
   echo $sql . "</br>" . $e->getMessage();
 }
 
+// Create user_likes table
 try {
   $sql = "CREATE TABLE IF NOT EXISTS user_likes (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -61,6 +63,7 @@ try {
   echo $sql . "</br>" . $e->getMessage();
 }
 
+// Create user_comments table
 try {
   $sql = "CREATE TABLE IF NOT EXISTS user_comments (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
