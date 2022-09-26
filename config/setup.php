@@ -33,7 +33,7 @@ try {
   $conn->exec($sql);
   echo "table created";
 } catch(PDOException $e){
-  echo $sql . "<br>" . $e->getMessage();
+  echo $sql . "</br>" . $e->getMessage();
 }
 
 try {
@@ -44,9 +44,34 @@ try {
     upload_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   )";
   $conn->exec($sql);
-  echo "user_images created";
+  echo "user_images created </br>";
 } catch (PDOException $e) {
-  echo $sql . "<br>" . $e->getMessage();
+  echo $sql . "</br>" . $e->getMessage();
+}
+
+try {
+  $sql = "CREATE TABLE IF NOT EXISTS user_likes (
+    id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    image_id INT(11) NOT NULL,
+    `user_id` INT(11) NOT NULL
+  )";
+  $conn->exec($sql);
+  echo "user_likes created </br>";
+} catch (PDOException $e) {
+  echo $sql . "</br>" . $e->getMessage();
+}
+
+try {
+  $sql = "CREATE TABLE IF NOT EXISTS user_comments (
+    id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    comment VARCHAR(255) NOT NULL,
+    image_id INT(11) NOT NULL,
+    `user_id` INT (11) NOT NULL
+  )";
+  $conn->exec($sql);
+  echo "user_comments created </br>";
+} catch (PDOException $e) {
+  echo $sql . "</br>" . $e->getMessage();
 }
 
 $conn = null;
