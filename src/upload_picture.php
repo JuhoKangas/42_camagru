@@ -8,15 +8,30 @@
 		$img_id = uniqid("img_");
 		$filename = $img_id . '.png';
 		$target_file = $target_dir . $filename;
+		$sticker1_path = $_POST['sticker1'];
+		$sticker2_path = $_POST['sticker2'];
 	
 		if ($data_url) {
+			
 			list($type, $data) = explode(';', $data_url);
 			list(, $data) = explode(',', $data);
 		
 			$data = base64_decode($data);
 			file_put_contents($target_file, $data);
 			uploadPicture($_SESSION['user_id'], $filename);
-			header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+			$sticker = imagecreatefrompng($sticker1_path);
+			$picture = imagecreatefrompng($target_file);
+
+			$marge_r = 20;
+			$marge_b = 20;
+			$sx = imagesx($sticker);
+			$sy = imagesy($sticker);
+
+			imagecopy($picture, $sticker, imagesx($picture) - $sx - $marge_t, imagesy($picture) - $sy - $marge_l, 0, 0, imagesx($sticker), imagesy($sticker));
+			imagepng($picture, $target_file);
+			imagedestroy($picture);
+			// header('Location: ' . $_SERVER['HTTP_REFERER']);
 		} else {
 			echo "empty pic";
 		}
@@ -24,7 +39,7 @@
 ?>
 
 <div class="content">
-	<?php echo $data_url ?>
+
 </div>
 
 <?php require_once("includes/footer.php"); ?>
