@@ -5,6 +5,19 @@
 ?>
 <div class="content">
 
+<h2 class="title text-center py-2">New post</h2>
+
+<div class="stickers-container">
+  <p>Select a sticker</p>
+  <div class="stickers">
+      <img class="sticker" src="../img/stickers/bee_sticker.png" alt="" id="sticker1">
+      <img class="sticker" src="../img/stickers/best-mom_sticker.png" alt="" id="sticker2">
+      <img class="sticker" src="../img/stickers/corgi_sticker.png" alt="" id="sticker3">
+      <img class="sticker" src="../img/stickers/dontworry_sticker.png" alt="" id="sticker4">
+      <img class="sticker" src="../img/stickers/yass_sticker.png" alt="" id="sticker5">
+  </div>
+</div>
+
 	<div class="web-photo">
     <button id="start-camera">Start Camera</button>
     <div class="picture-preview">
@@ -17,8 +30,8 @@
     <form action="upload_picture.php" method="post" enctype="multipart/form-data">
       <input name="submit" type="submit" value="Submit">
       <input id="canvas-picture" type="hidden" name="canvas_picture" value="">
-      <input id="sticker1" type="hidden" name="sticker1" value="">
-      <input id="sticker2" type="hidden" name="sticker2" value="">
+      <input id="c_sticker1" type="hidden" name="sticker1" value="">
+      <input id="c_sticker2" type="hidden" name="sticker2" value="">
     </form>
     
     <button id="clear-img">Clear Selection</button>
@@ -31,13 +44,6 @@
 
 	<a href="upload_file.php">upload from files</a>
 
-  <div class="stickers">
-    <img class="sticker" src="../img/stickers/bee_sticker.png" alt="" id="sticker1">
-    <img class="sticker" src="../img/stickers/best-mom_sticker.png" alt="" id="sticker2">
-    <img class="sticker" src="../img/stickers/corgi_sticker.png" alt="" id="sticker3">
-    <img class="sticker" src="../img/stickers/dontworry_sticker.png" alt="" id="sticker4">
-    <img class="sticker" src="../img/stickers/yass_sticker.png" alt="" id="sticker5">
-  </div>
 
 </div>
 <script>
@@ -51,8 +57,8 @@ const selected_sticker1 = document.querySelector("#selected-sticker1");
 const selected_sticker2 = document.querySelector("#selected-sticker2");
 const canvas_sticker1 = document.querySelector("#canvas-sticker1");
 const canvas_sticker2 = document.querySelector("#canvas-sticker2");
-const sticker1 = document.querySelector("#sticker1");
-const sticker2 = document.querySelector("#sticker2");
+const sticker1 = document.querySelector("#c_sticker1");
+const sticker2 = document.querySelector("#c_sticker2");
 
 const stickers = document.querySelectorAll(".sticker");
 

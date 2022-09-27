@@ -561,10 +561,20 @@ footer {
   margin-top: 0.7rem;
 }
 
+.stickers-container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  margin: 0 15%;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
 .stickers {
   display: flex;
-  height: 10%;
+  max-height: 110px;
   gap: 2rem;
+  justify-content: space-around;
 }
 
 /* IMAGE UPLOAD */
