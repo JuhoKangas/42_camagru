@@ -64,7 +64,6 @@ for (let i=0; i<stickers.length; i++) {
 
 const addSticker = (sticker) => {
 	let selectedSticker = document.getElementById(sticker);
-	let ctx = canvas.getContext("2d");
   selected_sticker1.classList.remove("d-none");
   selected_sticker2.classList.remove("d-none");
 
@@ -72,31 +71,31 @@ const addSticker = (sticker) => {
 		case "sticker1":
       selected_sticker1.src = "../img/stickers/bee_sticker.png";
       canvas_sticker1.src = "../img/stickers/bee_sticker.png";
-      sticker1.value = "../img/stickers/bee_sticker.png";
+      sticker1.value = "../img/stickers/bee_webcam.png";
 			break;
 
       case "sticker2":
       selected_sticker2.src = "../img/stickers/best-mom_sticker.png";
       canvas_sticker2.src = "../img/stickers/best-mom_sticker.png";
-      sticker2.value = "../img/stickers/best-mom_sticker.png";
+      sticker2.value = "../img/stickers/best-mom_webcam.png";
       break;
       
       case "sticker3":
       selected_sticker1.src = "../img/stickers/corgi_sticker.png";
       canvas_sticker1.src = "../img/stickers/corgi_sticker.png";
-      sticker1.value = "../img/stickers/corgi_sticker.png";
+      sticker1.value = "../img/stickers/corgi_webcam.png";
       break;
 
       case "sticker4":
       selected_sticker2.src = "../img/stickers/dontworry_sticker.png";
       canvas_sticker2.src = "../img/stickers/dontworry_sticker.png";
-      sticker2.value = "../img/stickers/dontworry_sticker.png";
+      sticker2.value = "../img/stickers/dontworry_webcam.png";
 			break;
       
       case "sticker5":
       selected_sticker1.src = "../img/stickers/yass_sticker.png";
       canvas_sticker1.src = "../img/stickers/yass_sticker.png";
-      sticker1.value = "../img/stickers/yass_sticker.png";
+      sticker1.value = "../img/stickers/yass_webcam.png";
 			break;
 	}
 }
