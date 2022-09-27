@@ -570,11 +570,27 @@ footer {
   background-color: #fff;
 }
 
+.stickers-container p {
+  font-weight: 700;
+  padding: 0.5rem 2.5rem;
+}
+
 .stickers {
   display: flex;
   max-height: 110px;
-  gap: 2rem;
   justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.stickers img {
+  padding: 0.5rem;
+  border: 2px solid #79747e;
+  border-radius: 8px;
+}
+
+.stickers img:hover {
+  background-color: rgb(244, 244, 244);
+  cursor: pointer;
 }
 
 /* IMAGE UPLOAD */

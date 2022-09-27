@@ -5,7 +5,7 @@
 ?>
 <div class="content">
 
-<h2 class="title text-center py-2">New post</h2>
+<h2 class="title text-center pt-2 pb-4">New post</h2>
 
 <div class="stickers-container">
   <p>Select a sticker</p>
