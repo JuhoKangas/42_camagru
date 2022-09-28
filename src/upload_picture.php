@@ -2,7 +2,7 @@
 	require_once("includes/header.php");
 	require_once("functions.php");
 
-	if (isset($_POST['submit'])) {
+	if (isset($_POST['canvas_picture'])) {
 		$data_url = $_POST['canvas_picture'];
 		$target_dir = "../img/uploads/";
 		$img_id = uniqid("img_");
