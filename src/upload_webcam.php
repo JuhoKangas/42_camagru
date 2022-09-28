@@ -25,7 +25,7 @@
       <img class="d-none" id="selected-sticker2"></img>
       <div class="webcam-bottom">
         <p id="save-photo">save photo</p>
-        <button class="btn d-flex align-center" id="click-photo"><img src="../img/icons/add_img.svg" alt=""></button>
+        <button class="btn d-flex align-center" id="click-photo" disabled><img src="../img/icons/add_img.svg" alt=""></button>
         <p id="clear-img">take another</p>
       </div>
     </div>
@@ -46,6 +46,7 @@
 
 </div>
 <script>
+const sticker_selected = false;
 const video = document.querySelector("#video");
 const click_button = document.querySelector("#click-photo");
 const canvas = document.querySelector("#canvas");
@@ -58,6 +59,8 @@ const sticker2 = document.querySelector("#c_sticker2");
 const save_photo = document.querySelector("#save-photo");
 const picture_form = document.querySelector("#picture-form");
 
+click_button.style.cursor = "not-allowed";
+
 // EVENT LISTENERS
 window.addEventListener('load', () => {
 	start_video();
@@ -68,6 +71,8 @@ save_photo.addEventListener("click", () => {
 })
 
 take_another.addEventListener('click', () => {
+  click_button.disabled = true;
+  click_button.style.cursor = "not-allowed";
   video.classList.remove("d-none");
   canvas.classList.add("d-none");
   remove_stickers();
@@ -80,10 +85,8 @@ click_button.addEventListener('click', () => {
     video.classList.add("d-none");
     canvas.classList.remove("d-none");
 		canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-		// canvas.getContext('2d').drawImage(selected_sticker1, 375, 250, 100, 100);
-		// canvas.getContext('2d').drawImage(selected_sticker2, 20, 20, 100, 100);
-		let image_data_url = canvas.toDataURL();
-	
+		
+    let image_data_url = canvas.toDataURL();
 		canvas_picture.value = image_data_url;
 	}
 });
@@ -92,6 +95,9 @@ const stickers = document.querySelectorAll(".sticker");
 for (let i=0; i<stickers.length; i++) {
 	stickers[i].addEventListener('click', e => {
 		addSticker(e.target.id);
+    click_button.disabled = false;
+    click_button.style.cursor = "default";
+
 	})
 }
 
