@@ -561,16 +561,17 @@ footer {
   margin-top: 0.7rem;
 }
 
-.stickers-container {
+.webcam-container {
   display: flex;
   flex-direction: column;
   border: 2px solid black;
-  margin: 0 15%;
+  margin: 0 10%;
   border-radius: 8px;
   background-color: #fff;
+  padding: 1rem;
 }
 
-.stickers-container p {
+.webcam-container p {
   font-weight: 700;
   padding: 0.5rem 2.5rem;
 }
@@ -583,7 +584,7 @@ footer {
 }
 
 .stickers img {
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
   border: 2px solid #79747e;
   border-radius: 8px;
 }
@@ -591,6 +592,12 @@ footer {
 .stickers img:hover {
   background-color: rgb(244, 244, 244);
   cursor: pointer;
+}
+
+.web-photo {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
 }
 
 /* IMAGE UPLOAD */
@@ -606,11 +613,37 @@ footer {
 }
 
 .picture-preview {
+  align-self: center;
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 500px;
+  border: 2px solid black;
+  border-radius: 8px;
+  background-color: black;
 }
 
-.picture-preview #selected-sticker1,
+#video {
+  width: 100%;
+  border-radius: 8px;
+}
+
+#click-photo {
+  align-self: center;
+  margin: 1rem 0;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+}
+
+.picture-preview #selected-sticker1 {
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+  width: 100px;
+  border-style: none;
+}
+
 .picture-preview #canvas-sticker1 {
   position: absolute;
   bottom: 20px;
@@ -626,6 +659,21 @@ footer {
   left: 20px;
   width: 100px;
   border-style: none;
+}
+
+.webcam-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.webcam-bottom p {
+  color: #d0d0d0;
+  align-self: center;
+  cursor: pointer;
+}
+
+.webcam-bottom p:hover {
+  color: #fff;
 }
 
 /* MEDIA QUERYS */
