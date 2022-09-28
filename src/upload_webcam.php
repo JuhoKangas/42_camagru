@@ -62,8 +62,12 @@ const picture_form = document.querySelector("#picture-form");
 click_button.style.cursor = "not-allowed";
 
 // EVENT LISTENERS
-window.addEventListener('load', () => {
-	start_video();
+window.addEventListener('load', async () => {
+	try {
+    await start_video();
+  } catch (e) {
+    alert("ACITAVATE THE FUCKING CAMERA");
+  }
 });
 
 save_photo.addEventListener("click", () => {
@@ -88,6 +92,7 @@ click_button.addEventListener('click', () => {
 		
     let image_data_url = canvas.toDataURL();
 		canvas_picture.value = image_data_url;
+    close_video();
 	}
 });
 
@@ -146,6 +151,11 @@ const remove_stickers = () => {
 }
 
 const clear_canvas = () => {
+	canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+	canvas_picture.value = "";
+}
+
+const close_video = () => {
   let stream = video.srcObject;
 	if (stream) {
 		let tracks = stream.getTracks();
@@ -156,9 +166,6 @@ const clear_canvas = () => {
 		}
 		video.srcObject = null;
 	}
-
-	canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-	canvas_picture.value = "";
 }
 
 const start_video = async() => {
