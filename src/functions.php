@@ -152,4 +152,17 @@ function uploadPicture($user_id, $img_path) {
   $conn = null;
 }
 
+function fetch_all_images() {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT * FROM user_images");
+    $stmt->execute();
+    $images = $stmt->fetchAll();
+    
+    return $images;
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+}
+
 ?>
