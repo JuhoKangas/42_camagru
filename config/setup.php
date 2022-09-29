@@ -42,6 +42,7 @@ try {
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     uploader_id INT(11) NOT NULL,
     img_name VARCHAR(255) NOT NULL,
+    img_desc VARCHAR(255) NOT NULL,
     webcam BOOLEAN NOT NULL,
     upload_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   )";
