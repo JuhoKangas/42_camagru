@@ -18,7 +18,7 @@
 		
 			$data = base64_decode($data);
 			file_put_contents($target_file, $data);
-			uploadPicture($_SESSION['user_id'], $filename);
+			uploadPicture($_SESSION['user_id'], $filename, "placeholder");
 
 			$sticker = imagecreatefrompng($sticker1_path);
 			$picture = imagecreatefrompng($target_file);
