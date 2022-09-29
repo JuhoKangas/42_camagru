@@ -138,12 +138,13 @@ function activate_user($email, $unique_token) {
   $conn = null;
 }
 
-function uploadPicture($user_id, $img_path) {
+function uploadPicture($user_id, $img_path, $img_desc) {
   try {
     $conn = connect();
-    $stmt = $conn->prepare("INSERT INTO user_images (uploader_id, img_path) VALUES (:uploader_id, :img_path)");
+    $stmt = $conn->prepare("INSERT INTO user_images (uploader_id, img_name, img_desc, webcam) VALUES (:uploader_id, :img_name, :img_desc, 1)");
     $stmt->bindParam(':uploader_id', $user_id);
-    $stmt->bindParam(':img_path', $img_path);
+    $stmt->bindParam(':img_name', $img_path);
+    $stmt->bindParam(':img_desc', $img_desc);
 
     $stmt->execute();
   } catch (PDOException $e) {
@@ -158,11 +159,40 @@ function fetch_all_images() {
     $stmt = $conn->prepare("SELECT * FROM user_images");
     $stmt->execute();
     $images = $stmt->fetchAll();
-    
+
     return $images;
   } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
   }
+}
+
+function get_username_by_id($id){
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT username FROM userinfo WHERE `id` = :userid");
+    $stmt->bindParam(':userid', $id);
+    $stmt->execute();
+
+    $user = $stmt->fetch();
+    return $user['username'];
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+function get_post_comments($id) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT comment, user_id FROM user_comments WHERE image_id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
 }
 
 ?>
