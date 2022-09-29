@@ -489,17 +489,6 @@ footer {
 
 /* CARDS */
 
-.cards-container {
-  display: flex;
-  padding: 0 10px;
-  justify-content: center;
-}
-
-.card-column {
-  flex: 0 0 380px;
-  padding: 0 10px;
-}
-
 .card {
   background: #fff;
   border: 1px solid #000;
@@ -680,26 +669,3 @@ footer {
   color: #fff;
 }
 
-/* MEDIA QUERYS */
-@media screen and (max-width: 1500px) {
-  .cards-container {
-    flex-wrap: wrap;
-    padding: 0 7%;
-  }
-
-  .card-column {
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .card-column {
-    flex: 100%;
-    max-width: 100%;
-  }
-
-  .cards-container {
-    padding: 0;
-  }
-}
