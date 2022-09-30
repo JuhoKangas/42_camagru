@@ -98,9 +98,7 @@
     </div>
   </div>
   <script>
-    console.log("<?php echo($_SESSION['logged_in_user']) ?>")
-
-    const like_post = document.querySelectorAll("#like_post");
+   const like_post = document.querySelectorAll("#like_post");
 
     for (let i=0;i<like_post.length; i++) {
       like_post[i].addEventListener("click", (e) => {
