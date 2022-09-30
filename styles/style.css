@@ -506,6 +506,7 @@ footer {
 
 .card-username {
   font-weight: 700;
+  margin-right: 0.5rem;
 }
 
 .card-time {
