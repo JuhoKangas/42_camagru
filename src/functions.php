@@ -208,4 +208,44 @@ function get_post_likes(int $id) {
   $conn = null;
 }
 
+function user_liked_post(int $id, int $user_id): bool {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT * FROM user_likes WHERE image_id = :id AND user_id = :user_id");
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
+
+    return $stmt->rowCount() != 0 ? true : false;
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+function unlike_post($post_id, $user_id) {
+  try{
+    $conn = connect();
+    $stmt = $conn->prepare("DELETE FROM user_likes WHERE image_id = :id AND user_id = :user_id");
+    $stmt->bindParam(':id', $post_id);
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+function like_post($image_id, $user_id) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("INSERT INTO user_likes (image_id, user_id) VALUES (:image_id, :user_id)");
+    $stmt->bindParam(':image_id', $image_id);
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
 ?>
