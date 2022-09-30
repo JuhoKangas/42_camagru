@@ -62,7 +62,15 @@
         </div>
           <div class="card-secondary">
             <div class="card-likes">
-              <img src="../img/icons/heart_vector.svg" alt="heart">
+              <form id="<?php echo($image['id']) ?>" action="like_post.php" method="post">
+                <?php if(user_liked_post($image['id'], $_SESSION['user_id'])): ?>
+                    <img data="<?php echo($image['id']) ?>" id="like_post" src="../img/icons/heart_filled.svg" alt="heart">
+                    <input class="like_input" type="hidden" name="unlike" value="<?php echo($image['id']) ?>">
+                <?php else: ?>
+                    <img data="<?php echo($image['id']) ?>"  id="like_post" src="../img/icons/heart_vector.svg" alt="heart">
+                    <input class="like_input" type="hidden" name="like" value="<?php echo($image['id']) ?>">
+                <?php endif; ?>
+              </form>
               <p><?php echo(get_post_likes($image['id'])) ?></p>
               <img src="../img/icons/comment-regular.svg" width="25" alt="">
               <p><?php echo(count(get_post_comments($image['id']))) ?></p>
@@ -91,5 +99,13 @@
   </div>
   <script>
     console.log("<?php echo($_SESSION['logged_in_user']) ?>")
+
+    const like_post = document.querySelectorAll("#like_post");
+
+    for (let i=0;i<like_post.length; i++) {
+      like_post[i].addEventListener("click", (e) => {
+        document.getElementById(e.target.attributes.data.value).submit();
+      })
+    }
   </script>
 <?php require_once("includes/footer.php") ?>
