@@ -63,9 +63,9 @@
           <div class="card-secondary">
             <div class="card-likes">
               <img src="../img/icons/heart_vector.svg" alt="heart">
-              <p>256</p>
+              <p><?php echo(get_post_likes($image['id'])) ?></p>
               <img src="../img/icons/comment-regular.svg" width="25" alt="">
-              <p>9</p>
+              <p><?php echo(count(get_post_comments($image['id']))) ?></p>
               <img src="../img/icons/share-nodes-solid.svg" width="25" alt="">
             </div>
             <div class="card-description">

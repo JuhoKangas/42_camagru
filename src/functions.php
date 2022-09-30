@@ -181,7 +181,7 @@ function get_username_by_id($id){
   $conn = null;
 }
 
-function get_post_comments($id) {
+function get_post_comments(int $id) {
   try {
     $conn = connect();
     $stmt = $conn->prepare("SELECT comment, user_id FROM user_comments WHERE image_id = :id");
@@ -189,6 +189,19 @@ function get_post_comments($id) {
     $stmt->execute();
 
     return $stmt->fetchAll();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+function get_post_likes(int $id) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT * FROM user_likes WHERE image_id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    return $stmt->rowCount();
   } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
   }
