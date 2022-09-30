@@ -138,7 +138,7 @@ function activate_user($email, $unique_token) {
   $conn = null;
 }
 
-function uploadPicture($user_id, $img_path, $img_desc) {
+function uploadPicture(int $user_id, string $img_path, string $img_desc = "Dont't stop chasing your dreams") {
   try {
     $conn = connect();
     $stmt = $conn->prepare("INSERT INTO user_images (uploader_id, img_name, img_desc, webcam) VALUES (:uploader_id, :img_name, :img_desc, 1)");
