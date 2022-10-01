@@ -45,7 +45,7 @@
 			imagedestroy($picture);
 			header('Location: ' . $_SERVER['HTTP_REFERER']);
 		} else {
-			echo "empty pic";
+			echo "There was a problem uploading your picture, please try again";
 		}
 	}
 ?>
