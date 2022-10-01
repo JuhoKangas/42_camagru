@@ -38,7 +38,8 @@
   require_once("includes/header.php");
   require_once("functions.php");
   if (empty($_SESSION['logged_in_user'])) {
-    header("location: login.php");
+    $_SESSION['logged_in_user'] = null;
+    $_SESSION['user_id'] = 0;
   }
 
   $images = fetch_all_images();
@@ -63,7 +64,7 @@
           <div class="card-secondary">
             <div class="card-likes">
               <form id="<?php echo($image['id']) ?>" action="like_post.php" method="post">
-                <?php if(user_liked_post($image['id'], $_SESSION['user_id'])): ?>
+                <?php if($_SESSION['logged_in_user'] && user_liked_post($image['id'], $_SESSION['user_id'])): ?>
                     <img data="<?php echo($image['id']) ?>" id="like_post" src="../img/icons/heart_filled.svg" alt="heart">
                     <input class="like_input" type="hidden" name="unlike" value="<?php echo($image['id']) ?>">
                 <?php else: ?>
@@ -74,7 +75,6 @@
               <p><?php echo(get_post_likes($image['id'])) ?></p>
               <img src="../img/icons/comment-regular.svg" width="25" alt="">
               <p><?php echo(count(get_post_comments($image['id']))) ?></p>
-              <img src="../img/icons/share-nodes-solid.svg" width="25" alt="">
             </div>
             <div class="card-description">
               <p><?php echo($image['img_desc']) ?></p>
@@ -90,7 +90,15 @@
               </div>
               <?php endforeach; ?>
             </div>
-            <div class="card-comment"></div>
+            <?php if (isset($_SESSION['logged_in_user'])): ?>
+              <form id="comment_<?php echo $image['id'] ?>" action="add_comment.php" method="post">
+                <div class="card-comment">
+                  <input class="comment-input" type="text" name="post_comment" id="post_comment" value="">
+                  <input type="hidden" name="image_id" value="<?php echo($image['id']) ?>">
+                  <img data="<?php echo $image['id'] ?>" class="comment-icon" src="../img/icons/comment_icon.svg" alt="comment post">
+                </div>
+              </form>
+            <?php endif; ?>
 
           </div>
         </div>
@@ -99,11 +107,22 @@
   </div>
   <script>
    const like_post = document.querySelectorAll("#like_post");
+   const comment = document.querySelectorAll(".comment-icon");
+   let user = "<?php echo $_SESSION['logged_in_user'] ?>"
 
-    for (let i=0;i<like_post.length; i++) {
-      like_post[i].addEventListener("click", (e) => {
-        document.getElementById(e.target.attributes.data.value).submit();
-      })
-    }
+   if (user){
+     for (let i = 0 ; i < like_post.length; i++) {
+       like_post[i].addEventListener("click", (e) => {
+         document.getElementById(e.target.attributes.data.value).submit();
+       })
+     }
+   }
+
+   for (let j = 0; j < comment.length; j++) {
+    comment[j].addEventListener("click", e => {
+      document.getElementById("comment_" + e.target.attributes.data.value).submit();
+    })
+   }
+
   </script>
 <?php require_once("includes/footer.php") ?>

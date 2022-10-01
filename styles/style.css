@@ -534,10 +534,6 @@ footer {
   margin: 0 1rem 0 0.5rem;
 }
 
-.card-likes img:last-child {
-  margin-left: auto;
-}
-
 .card-comments-list {
   padding: 0.5rem 1rem;
 }
@@ -550,6 +546,36 @@ footer {
   display: flex;
   gap: 0.3rem;
   margin-top: 0.7rem;
+}
+
+.card-comment {
+  display: flex;
+  width: 92%;
+  margin: 15px auto;
+}
+
+.comment-input {
+  width: 100%;
+  font-size: 20px;
+  padding: 5px;
+  outline: none;
+  border: 1px solid #000;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  color: #000;
+}
+
+.comment-icon {
+  padding: 10px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  border-left: none;
+  min-width: 50px;
+  border-radius: 0 4px 4px 0;
+  text-align: center;
+  height: 40px;
+  cursor: pointer;
 }
 
 .webcam-container {
