@@ -248,4 +248,19 @@ function like_post($image_id, $user_id) {
   }
   $conn = null;
 }
+
+function post_comment($comment, $user_id, $image_id) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("INSERT INTO user_comments (comment, image_id, user_id) VALUES (:comment, :image_id, :user_id)");
+    $stmt->bindParam(':comment', $comment);
+    $stmt->bindParam(':image_id', $image_id);
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
 ?>
