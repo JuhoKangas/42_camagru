@@ -156,7 +156,7 @@ function uploadPicture(int $user_id, string $img_path, string $img_desc = "Dont'
 function fetch_all_images() {
   try {
     $conn = connect();
-    $stmt = $conn->prepare("SELECT * FROM user_images");
+    $stmt = $conn->prepare("SELECT * FROM user_images ORDER BY id DESC");
     $stmt->execute();
     $images = $stmt->fetchAll();
 
