@@ -21,32 +21,35 @@
 		
 			$data = base64_decode($data);
 			file_put_contents($target_file, $data);
-			uploadPicture($_SESSION['user_id'], $filename, $description);
-
-			$sticker = imagecreatefrompng($sticker1_path);
+			
 			$picture = imagecreatefrompng($target_file);
-
-			$marge_r = 20;
-			$marge_b = 20;
-			$sx = imagesx($sticker);
-			$sy = imagesy($sticker);
-
-			imagecopy($picture, $sticker, imagesx($picture) - $sx - $marge_r, imagesy($picture) - $sy - $marge_b, 0, 0, imagesx($sticker), imagesy($sticker));
+			
+			if (!empty($sticker1_path)) {
+				$sticker = imagecreatefrompng($sticker1_path);
+				
+				$marge_r = 20;
+				$marge_b = 20;
+				$sx = imagesx($sticker);
+				$sy = imagesy($sticker);
+				
+				imagecopy($picture, $sticker, imagesx($picture) - $sx - $marge_r, imagesy($picture) - $sy - $marge_b, 0, 0, imagesx($sticker), imagesy($sticker));
+			}
 			
 			if (!empty($sticker2_path)) {
 				$sticker = imagecreatefrompng($sticker2_path);
-
+				
 				$marge_r = 350;
 				$marge_b = 250;
 				$sx = imagesx($sticker);
 				$sy = imagesy($sticker);
-
+				
 				imagecopy($picture, $sticker, imagesx($picture) - $sx - $marge_r, imagesy($picture) - $sy - $marge_b, 0, 0, imagesx($sticker), imagesy($sticker));
 			}
 			
 			imagepng($picture, $target_file);
 			imagedestroy($picture);
-			header('Location: ' . $_SERVER['HTTP_REFERER']);
+			uploadPicture($_SESSION['user_id'], $filename, $description);
+			header('Location: home.php');
 		} else {
 			echo "There was a problem uploading your picture, please try again";
 		}

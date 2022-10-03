@@ -2,6 +2,10 @@
 	require_once("includes/header.php");
 	require_once("functions.php");
 
+  if (empty($_SESSION['logged_in_user'])) {
+    header("location: home.php");
+  }
+
 ?>
 <div class="content">
 
@@ -54,6 +58,7 @@ const sticker1 = document.querySelector("#c_sticker1");
 const sticker2 = document.querySelector("#c_sticker2");
 const save_photo = document.querySelector("#save-photo");
 const picture_form = document.querySelector("#picture-form");
+const description = document.getElementById("picture-description");
 
 click_button.style.cursor = "not-allowed";
 
@@ -67,7 +72,7 @@ window.addEventListener('load', async () => {
 });
 
 save_photo.addEventListener("click", () => {
-  if (canvas_picture.value != "") {
+  if (canvas_picture.value != "" && description.value != "") {
     picture_form.submit();
   }
 })
