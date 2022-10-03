@@ -2,6 +2,10 @@
   require_once('includes/header.php');
   require_once('functions.php');
 
+  if (empty($_SESSION['logged_in_user'])) {
+    header("location: home.php");
+  }
+
   $imgID = uniqid("img_");
   $uploadDir = "../img/uploads/";
   if ($_FILES) {
@@ -65,8 +69,12 @@
       } else {
         move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
       }
-      uploadPicture($_SESSION['user_id'], $filename, "description", 0);
+      if (!empty($_POST['description'])) {
+        $description = $_POST['description'];
       }
+      uploadPicture($_SESSION['user_id'], $filename, $description, 0);
+      header("location: home.php");
+    }
 
   }
 
@@ -75,28 +83,32 @@
 
 <div class="content">
 
-  <form action="upload_file.php" method="post" enctype="multipart/form-data">
-    <input name="submit" type="submit" value="Submit">
-    <input id="canvas-picture" type="hidden" name="canvas_picture" value="">
-    <div class="preview">
-      <img id="picture">
-      <canvas id="canvas" width="0" height="0"></canvas>
+  <div class="webcam-container">
+    
+    <div class="stickers">
+      <img class="sticker" src="../img/stickers/bee_sticker.png" alt="" id="sticker1">
+      <img class="sticker" src="../img/stickers/best-mom_sticker.png" alt="" id="sticker2">
+      <img class="sticker" src="../img/stickers/corgi_sticker.png" alt="" id="sticker3">
+      <img class="sticker" src="../img/stickers/dontworry_sticker.png" alt="" id="sticker4">
+      <img class="sticker" src="../img/stickers/yass_sticker.png" alt="" id="sticker5">
     </div>
-    <input accept="image/*" type="file" name="fileToUpload" id="fileToUpload">
-  </form>
-  <div class="clear">
-    <button id="clear-img">Clear Selection</button>
+
+    <form class="d-flex d-column align-center" action="upload_file.php" method="post" enctype="multipart/form-data">
+      <input id="canvas-picture" type="hidden" name="canvas_picture" value="">
+      <div class="preview">
+        <img id="picture">
+        <canvas id="canvas" width="0" height="0"></canvas>
+      </div>
+      <input accept="image/*" type="file" name="fileToUpload" id="fileToUpload" required >
+      <input type="text" name="description" id="picture-description" placeholder="Customize the image description" required>
+      <br>
+      <input class="btn btn-main my-4" name="submit" type="submit" value="Submit">
+      <button class="btn mt-4 d-none" id="clear-img">Clear Selection</button>
+    </form>
   </div>
 
 	<a href="upload_webcam.php">upload with webcam</a>
 
-  <div class="stickers">
-    <img class="sticker" src="../img/stickers/bee_sticker.png" alt="" id="sticker1">
-    <img class="sticker" src="../img/stickers/best-mom_sticker.png" alt="" id="sticker2">
-    <img class="sticker" src="../img/stickers/corgi_sticker.png" alt="" id="sticker3">
-    <img class="sticker" src="../img/stickers/dontworry_sticker.png" alt="" id="sticker4">
-    <img class="sticker" src="../img/stickers/yass_sticker.png" alt="" id="sticker5">
-  </div>
 </div>
 
 <script>
@@ -110,7 +122,9 @@ const sticker = document.querySelectorAll(".sticker");
 
 for (let i=0; i<sticker.length; i++) {
 	sticker[i].addEventListener('click', e => {
-		addSticker(e.target.id);
+    if (picture.src != "") {
+      addSticker(e.target.id);
+    }
 	})
 }
 
@@ -143,6 +157,7 @@ const addSticker = (sticker) => {
 }
 
 file_input.onchange = () => {
+  stop_button.classList.remove("d-none");
 	const [file] = file_input.files;
 	if (file) {
 		picture.src = URL.createObjectURL(file);
@@ -164,16 +179,12 @@ file_input.onchange = () => {
 							canvas.height = maxDim;
 					}
 				}
-				// canvas.getContext('2d').drawImage(picture, 0, 0, picture.width, picture.height);
-				// let image_data_url = canvas.toDataURL();
-				// canvas_picture.value = image_data_url;
 		}, 50);
 	}
 }
 
 stop_button.addEventListener('click', () => {
-	canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-	canvas_picture.value = "";
+	location.reload();
 })
 </script>
 
