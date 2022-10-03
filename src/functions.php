@@ -167,6 +167,19 @@ function fetch_all_images() {
   }
 }
 
+function fetch_images(int $first, int $amount) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT * FROM user_images ORDER BY id DESC LIMIT $first, $amount");
+
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+}
+
 function get_username_by_id($id){
   try {
     $conn = connect();
