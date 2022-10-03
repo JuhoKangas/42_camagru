@@ -8,14 +8,18 @@
     $username = $_POST['username'];
     $pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
   
+    if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z]{16,50}$/', $_POST['pwd'])) {
+      $errMsg = 'the password does not meet the requirements!';
+    }
+    
     if ($_POST['submit'] === 'OK' && $_POST['pwd'] !== $_POST['pwdAgain']) {
       $errMsg = "Passwords don't match";
     }
-  
+    
     if ($_POST['submit'] === 'OK' && !(usernameAvailable($username))) {
       $errMsg = "Username is taken";
     }
-  
+    
     if ($_POST['submit'] === 'OK' && !(emailAvailable($email))) {
       $errMsg = "Email is already in use";
     }
@@ -37,23 +41,27 @@
           <input type="email"
                   name="email"
                   value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>"
-                  placeholder="a.honnold@climb.com" />
+                  placeholder="a.honnold@climb.com"
+                  required />
         </div>
         <div class="control">
           <label for="username">Username</label>
           <input type="text"
                   name="username"
                   value="<?php echo isset($_POST['username']) ? $_POST['username'] : '' ?>"
-                  placeholder="assblaster69" />
+                  placeholder="assblaster69"
+                  required />
         </div>
         <div class="control">
           <label for="pwd">Password</label>
           <input type="password"
                   name="pwd"
                   value="<?php echo isset($_POST['pwd']) ? $_POST['pwd'] : '' ?>"
-                  placeholder="Pleaseusepassphrase" />
-                  <div class="sub-text text-center px-4 py-2">
-                    <p>Password must be N characters long and contain letters, numbers, and symbols.</p>
+                  placeholder="Pleaseusepassphrase"
+                  required />
+                  <div class="sub-text text-center px-4 py-3">
+                    <!-- 16 character long password would take approximately 1511681941489 years to brute force so it's safe -->
+                    <p>Password must be at least 16 characters long and has to contain letters and numbers</p>
                   </div>
         </div>
         <div class="control">
@@ -61,10 +69,11 @@
           <input type="password"
                   name="pwdAgain"
                   value="<?php echo isset($_POST['pwdAgain']) ? $_POST['pwdAgain'] : '' ?>"
-                  placeholder="Password again" />
+                  placeholder="Password again"
+                  required />
         </div>
         <?php if($errMsg): ?>
-          <small><?php echo $errMsg ?></small>
+          <small class="sub-text text-center text-warning mt-4 px-4"><?php echo $errMsg ?></small>
         <?php endif; ?>
         <button class="btn btn-main btn-big mt-5" type="submit" value="OK" name="submit">Sign up</button>
       </div>
