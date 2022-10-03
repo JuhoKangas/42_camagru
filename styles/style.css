@@ -708,3 +708,32 @@ footer {
   margin: 2rem auto 0;
   width: 45%;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: #111;
+  padding: 0.5rem 0.8rem;
+  background-color: #3d997d79;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination a:hover {
+  text-decoration: none;
+  color: #111;
+  padding: 0.5rem 0.8rem;
+  background-color: #3d997d4d;
+  border-radius: 4px;
+}
+
+.page-active {
+  background-color: #1f6f57c8 !important;
+  pointer-events: none;
+}
