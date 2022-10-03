@@ -21,7 +21,7 @@
     <body>
       <nav>
         <div class="navbar">
-          <img src="../img/camagru-logo.svg" alt="camagru logo" />
+          <a href="home.php"><img src="../img/camagru-logo.svg" alt="camagru logo" /></a>
           <div class="buttons-middle">
             <a href="home.php"><button class="btn btn-icon"><img src="../img/icons/home.svg" alt=""></button></a>
             <a href="upload_webcam.php"><button class="btn btn-icon"><img src="../img/icons/add_img.svg" alt=""></button></a>
@@ -51,7 +51,7 @@
     <body>
       <nav>
         <div class="navbar">
-          <img src="../img/camagru-logo.svg" alt="camagru logo" />
+          <a href="home.php"><img src="../img/camagru-logo.svg" alt="camagru logo" /></a>
           <div class="nav-btns">
             <a href="../src/login.php"><button class="btn btn-main">Log in</button></a>
             <a href="../src/create.php"><button class="btn">Sign up</button></a>
