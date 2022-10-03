@@ -112,7 +112,8 @@
 
    if (user){
      for (let i = 0 ; i < like_post.length; i++) {
-       like_post[i].addEventListener("click", (e) => {
+      like_post[i].style.cursor = "pointer";
+      like_post[i].addEventListener("click", (e) => {
          document.getElementById(e.target.attributes.data.value).submit();
        })
      }
