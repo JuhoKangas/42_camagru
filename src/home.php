@@ -51,7 +51,7 @@
     <?php foreach($images as $image): ?>
       <!-- HTML -->
 
-      <div class="card">
+      <div class="card pb-3">
         <div class="card-primary">
           <div class="card-header">
             <p class="card-username"><?php echo(get_username_by_id($image['uploader_id'])) ?></p>
