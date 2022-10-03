@@ -1,39 +1,3 @@
-<!-- 
-  CORRECT CARD WITHOUT FONTAWESOME
-  PUT AS MANY AS YOU WANT INSIDE div.card-column
-        <div class="card">
-          <div class="card-header">
-            <p class="card-username">username</p>
-            <p class="card-time">39m ago</p>
-          </div>
-          <div class="card-img">
-            <img src="../img/john-o-nolan-6f_ANCcbj3o-unsplash.jpg" alt="">
-          </div>
-          <div class="card-likes">
-            <img src="../img/icons/heart_vector.svg" alt="heart">
-            <p>256</p>
-            <img src="../img/icons/comment-regular.svg" width="25" alt="">
-            <p>9</p>
-            <img src="../img/icons/share-nodes-solid.svg" width="25" alt="">
-          </div>
-          <div class="card-description">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum unde molestias et veritatis ut illo, numquam culpa minima aliquam quaerat.</p>
-          </div>
-          <div class="card-comments-list">
-            <div class="comment">
-              <p class="card-username">username</p>
-              <p>Lorem ipsum dolor sit amet.</p>
-            </div>
-            <div class="comment">
-              <p class="card-username">username</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam.</p>
-            </div>
-          </div>
-          <div class="card-comment"></div>
-        </div>
-
- -->
-
 <?php 
   require_once("includes/header.php");
   require_once("functions.php");
@@ -42,7 +6,19 @@
     $_SESSION['user_id'] = 0;
   }
 
-  $images = fetch_all_images();
+  $results_per_page = 5;
+
+  $number_of_results = count(fetch_all_images());
+  $number_of_pages = ceil($number_of_results / $results_per_page);
+
+  if (!isset($_GET['page'])) {
+    $page = 1;
+  } else {
+    $page = $_GET['page'];
+  }
+
+  $first_post = ($page - 1) * $results_per_page;
+  $images = fetch_images($first_post, $results_per_page);
 ?>
   <div class="content">
 
@@ -104,10 +80,21 @@
         </div>
     <?php endforeach; ?>
     </div>
+    <div class="pagination mt-5">
+      <?php for ($page = 1; $page <= $number_of_pages; $page++): ?>
+          <?php if ($page == $_GET['page']): ?>
+            <a class="page-active" href="home.php?page=<?php echo $page ?>"> <?php echo $page ?> </a>
+          <?php else: ?>
+            <a href="home.php?page=<?php echo $page ?>"> <?php echo $page ?> </a>
+          <?php endif; ?>
+      <?php endfor; ?>
+    </div>
   </div>
+
   <script>
    const like_post = document.querySelectorAll("#like_post");
    const comment = document.querySelectorAll(".comment-icon");
+   const page_active = document.querySelector(".page-active");
    let user = "<?php echo $_SESSION['logged_in_user'] ?>"
 
    if (user){
