@@ -34,10 +34,10 @@
       <input id="canvas-picture" type="hidden" name="canvas_picture" value="">
       <input id="c_sticker1" type="hidden" name="sticker1" value="">
       <input id="c_sticker2" type="hidden" name="sticker2" value="">
+      <input type="text" name="description" id="picture-description" placeholder="Customize the image description">
     </form>
     
   </div>
-
 </div>
 <a href="upload_file.php">upload from files</a>
 </div>

@@ -696,3 +696,15 @@ footer {
 .webcam-bottom p:hover {
   color: #fff;
 }
+
+#picture-form {
+  display: flex;
+}
+
+#picture-description {
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 2rem auto 0;
+  width: 45%;
+}

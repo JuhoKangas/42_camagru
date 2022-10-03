@@ -10,6 +10,9 @@
 		$target_file = $target_dir . $filename;
 		$sticker1_path = $_POST['sticker1'];
 		$sticker2_path = $_POST['sticker2'];
+		if (!empty($_POST['description'])) {
+			$description = $_POST['description'];
+		}
 	
 		if ($data_url) {
 			
@@ -18,7 +21,7 @@
 		
 			$data = base64_decode($data);
 			file_put_contents($target_file, $data);
-			uploadPicture($_SESSION['user_id'], $filename, "placeholder");
+			uploadPicture($_SESSION['user_id'], $filename, $description);
 
 			$sticker = imagecreatefrompng($sticker1_path);
 			$picture = imagecreatefrompng($target_file);
