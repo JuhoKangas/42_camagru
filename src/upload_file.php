@@ -65,7 +65,7 @@
       } else {
         move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
       }
-      uploadPicture($_SESSION['user_id'], $filename);
+      uploadPicture($_SESSION['user_id'], $filename, "description", 0);
       }
 
   }

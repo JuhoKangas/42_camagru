@@ -138,13 +138,14 @@ function activate_user($email, $unique_token) {
   $conn = null;
 }
 
-function uploadPicture(int $user_id, string $img_path, string $img_desc = "Dont't stop chasing your dreams") {
+function uploadPicture(int $user_id, string $img_path, string $img_desc = "Dont't stop chasing your dreams", int $webcam = 1) {
   try {
     $conn = connect();
-    $stmt = $conn->prepare("INSERT INTO user_images (uploader_id, img_name, img_desc, webcam) VALUES (:uploader_id, :img_name, :img_desc, 1)");
+    $stmt = $conn->prepare("INSERT INTO user_images (uploader_id, img_name, img_desc, webcam) VALUES (:uploader_id, :img_name, :img_desc, :webcam)");
     $stmt->bindParam(':uploader_id', $user_id);
     $stmt->bindParam(':img_name', $img_path);
     $stmt->bindParam(':img_desc', $img_desc);
+    $stmt->bindParam(':webcam', $webcam);
 
     $stmt->execute();
   } catch (PDOException $e) {
