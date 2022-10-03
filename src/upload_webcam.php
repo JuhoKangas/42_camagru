@@ -39,11 +39,7 @@
   </div>
 
 </div>
-
-
 <a href="upload_file.php">upload from files</a>
-
-
 </div>
 <script>
 const sticker_selected = false;
@@ -66,12 +62,14 @@ window.addEventListener('load', async () => {
 	try {
     await start_video();
   } catch (e) {
-    alert("ACITAVATE THE FUCKING CAMERA");
+    alert("In order to take photos we need your permission to use the webcam");
   }
 });
 
 save_photo.addEventListener("click", () => {
-  picture_form.submit();
+  if (canvas_picture.value != "") {
+    picture_form.submit();
+  }
 })
 
 take_another.addEventListener('click', () => {
