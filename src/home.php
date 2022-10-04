@@ -33,7 +33,7 @@
         <div class="card-primary">
           <div class="card-header">
             <p class="card-username"><?php echo(get_username_by_id($image['uploader_id'])) ?></p>
-            <p class="card-time"><?php echo($image['upload_time']) ?></p>
+            <p class="card-time"><?php echo(date_format(date_create($image['upload_time']), "M jS H:i")) ?></p>
           </div>
           <div class="card-img">
             <img src="<?php echo("../img/uploads/" . $image['img_name']) ?>" alt="">
