@@ -737,3 +737,24 @@ footer {
   background-color: #1f6f57c8 !important;
   pointer-events: none;
 }
+
+/* SETTINGS */
+
+
+
+/* MEDIA QUERYS */
+
+@media (max-width: 700px) {
+  .btn-icon img {
+    width: 4vw;
+  }
+
+  .btn-icon {
+    padding: 0 4px;
+  }
+
+  .navbar {
+    justify-content: space-between;
+    padding: 0 5%;
+  }
+}
