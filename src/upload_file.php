@@ -16,7 +16,7 @@
   $uploadOk = 1;
   $errMsg = "";
 
-  if(isset($_POST['submit'])) {
+  if(isset($_POST['submit']) && !empty($_FILES["fileToUpload"]["tmp_name"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
       $uploadOk = 1;
