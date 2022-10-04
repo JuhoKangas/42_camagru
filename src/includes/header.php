@@ -28,7 +28,7 @@
             <a href="#"><button class="btn btn-icon"><img src="../img/icons/profile.svg" alt=""></button></a>
           </div>
           <div class="buttons-right">
-            <a href="#"><button class="btn btn-icon"><img src="../img/icons/settings.svg" alt=""></button></a>
+            <a href="settings.php"><button class="btn btn-icon"><img src="../img/icons/settings.svg" alt=""></button></a>
             <a href="logout.php"><button class="btn btn-icon"><img src="../img/icons/logout.svg" alt=""></button></a>
           </div>
         </div>
