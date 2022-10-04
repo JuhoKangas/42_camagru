@@ -11,7 +11,7 @@
 		$sticker1_path = $_POST['sticker1'];
 		$sticker2_path = $_POST['sticker2'];
 		if (!empty($_POST['description'])) {
-			$description = $_POST['description'];
+			$description = htmlspecialchars($_POST['description']);
 		}
 	
 		if ($data_url) {

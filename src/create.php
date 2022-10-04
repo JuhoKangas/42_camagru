@@ -4,8 +4,8 @@
 
   $errMsg = '';
   if ($_POST) {
-    $email = $_POST['email'];
-    $username = $_POST['username'];
+    $email = htmlspecialchars($_POST['email']);
+    $username = htmlspecialchars($_POST['username']);
     $pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
   
     if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z]{16,50}$/', $_POST['pwd'])) {

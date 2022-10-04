@@ -20,7 +20,7 @@
 	}
 	
 	if (isset($_POST['new_email'])) {
-		$email = $_POST['new_email'];
+		$email = htmlspecialchars($_POST['new_email']);
 		try {
 			$conn = connect();
 			$stmt = $conn->prepare("UPDATE userinfo SET email = :email WHERE id = :id");
@@ -31,11 +31,11 @@
 			echo $e->getMessage();
 		}
 		$conn = null;
-		$message = "Your email was updated to $email!";
+		$message = "Your email was updated to " . htmlspecialchars_decode($email) . "!";
 	}
 	
 	if (isset($_POST['new_username'])) {
-		$username = $_POST['new_username'];
+		$username = htmlspecialchars($_POST['new_username']);
 		try {
 			$conn = connect();
 			$stmt = $conn->prepare("UPDATE userinfo SET username = :username WHERE id = :id");
@@ -47,7 +47,7 @@
 		}
 		$_SESSION['logged_in_user'] = $username;
 		$conn = null;
-		$message = "Your username was updated to $username!";
+		$message = "Your username was updated to " . htmlspecialchars_decode($username) . "!";
 	}
 
 	if (isset($_POST['new_password'])) {
