@@ -13,8 +13,10 @@
 
   if (!isset($_GET['page'])) {
     $page = 1;
+    $spage = 1;
   } else {
     $page = $_GET['page'];
+    $spage = $_GET['page'];
   }
 
   $first_post = ($page - 1) * $results_per_page;
@@ -82,7 +84,7 @@
     </div>
     <div class="pagination mt-5">
       <?php for ($page = 1; $page <= $number_of_pages; $page++): ?>
-          <?php if ($page == $_GET['page']): ?>
+          <?php if ($page == $spage): ?>
             <a class="page-active" href="home.php?page=<?php echo $page ?>"> <?php echo $page ?> </a>
           <?php else: ?>
             <a href="home.php?page=<?php echo $page ?>"> <?php echo $page ?> </a>
