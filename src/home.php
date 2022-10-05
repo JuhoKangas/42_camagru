@@ -15,9 +15,7 @@
     $page = 1;
     $spage = 1;
   } else {
-    if ($_GET['page'] < 1) {
-      header('location: home.php');
-    } else if ($_GET['page'] > $number_of_pages) {
+    if ($_GET['page'] < 1 || $_GET['page'] > $number_of_pages) {
       header('location: home.php');
     } else {
       $page = $_GET['page'];
