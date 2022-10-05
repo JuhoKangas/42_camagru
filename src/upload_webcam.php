@@ -6,44 +6,53 @@
     header("location: home.php");
   }
 
+  $user_images = fetch_user_webcam_images($_SESSION['user_id']);
+
 ?>
 <div class="content">
 
-<h2 class="title text-center pt-2 pb-4">New post</h2>
+  <h2 class="title text-center pt-2 pb-4">New post</h2>
 
-<div class="webcam-container">
-  <p>Select a sticker</p>
-  <div class="stickers">
-      <img class="sticker" src="../img/stickers/bee_sticker.png" alt="" id="sticker1">
-      <img class="sticker" src="../img/stickers/best-mom_sticker.png" alt="" id="sticker2">
-      <img class="sticker" src="../img/stickers/corgi_sticker.png" alt="" id="sticker3">
-      <img class="sticker" src="../img/stickers/dontworry_sticker.png" alt="" id="sticker4">
-      <img class="sticker" src="../img/stickers/yass_sticker.png" alt="" id="sticker5">
-  </div>
+  <div class="webcam-container">
+    <p>Select a sticker</p>
+    <div class="stickers">
+        <img class="sticker" src="../img/stickers/bee_sticker.png" alt="" id="sticker1">
+        <img class="sticker" src="../img/stickers/best-mom_sticker.png" alt="" id="sticker2">
+        <img class="sticker" src="../img/stickers/corgi_sticker.png" alt="" id="sticker3">
+        <img class="sticker" src="../img/stickers/dontworry_sticker.png" alt="" id="sticker4">
+        <img class="sticker" src="../img/stickers/yass_sticker.png" alt="" id="sticker5">
+    </div>
 
-  <div class="web-photo">
-    <div class="picture-preview">
-      <video id="video" width="500" height="375" autoplay></video>
-      <canvas class="d-none" id="canvas" width="500" height="375"></canvas>
-      <img class="d-none" id="selected-sticker1"></img>
-      <img class="d-none" id="selected-sticker2"></img>
-      <div class="webcam-bottom">
-        <p id="save-photo">save photo</p>
-        <button class="btn d-flex align-center" id="click-photo" disabled><img src="../img/icons/add_img.svg" alt=""></button>
-        <p id="clear-img">take another</p>
+    <div class="web-photo">
+      <div class="webcam">
+        <div class="picture-preview">
+          <video id="video" width="380" height="285" autoplay></video>
+          <canvas class="d-none" id="canvas" width="380" height="285"></canvas>
+          <img class="d-none" id="selected-sticker1"></img>
+          <img class="d-none" id="selected-sticker2"></img>
+          <div class="webcam-bottom">
+            <p id="save-photo">save photo</p>
+            <button class="btn d-flex align-center" id="click-photo" disabled><img src="../img/icons/add_img.svg" alt=""></button>
+            <p id="clear-img">take another</p>
+          </div>
+        </div>
+        <form id="picture-form" action="upload_picture.php" method="post" enctype="multipart/form-data">
+          <input id="canvas-picture" type="hidden" name="canvas_picture" value="">
+          <input id="c_sticker1" type="hidden" name="sticker1" value="">
+          <input id="c_sticker2" type="hidden" name="sticker2" value="">
+          <input type="text" name="description" id="picture-description" maxlength="255" placeholder="Image description in 255 characters">
+        </form>
+      </div>
+      
+      <div class="sidebar">
+        <h2 class="mb-4">Previously taken photos:</h2>
+        <?php foreach ($user_images as $image): ?>
+          <img src="../img/uploads/<?php echo $image['img_name']?>" alt="">
+        <?php endforeach; ?>
       </div>
     </div>
-    
-    <form id="picture-form" action="upload_picture.php" method="post" enctype="multipart/form-data">
-      <input id="canvas-picture" type="hidden" name="canvas_picture" value="">
-      <input id="c_sticker1" type="hidden" name="sticker1" value="">
-      <input id="c_sticker2" type="hidden" name="sticker2" value="">
-      <input type="text" name="description" id="picture-description" maxlength="255" placeholder="Image description in 255 characters">
-    </form>
-    
+    <a href="upload_file.php">Are you poor and don't have a webcam? Upload from files here</a>
   </div>
-</div>
-<a href="upload_file.php">upload from files</a>
 </div>
 <script>
 const sticker_selected = false;

@@ -43,8 +43,8 @@
 			if (!empty($sticker2_path)) {
 				$sticker = imagecreatefrompng($sticker2_path);
 				
-				$marge_r = 350;
-				$marge_b = 250;
+				$marge_r = 230;
+				$marge_b = 155;
 				$sx = imagesx($sticker);
 				$sy = imagesy($sticker);
 				
@@ -54,7 +54,7 @@
 			imagepng($picture, $target_file);
 			imagedestroy($picture);
 			uploadPicture($_SESSION['user_id'], $filename, $description);
-			// header('Location: home.php');
+			header('Location: home.php');
 		} else {
 			echo "There was a problem uploading your picture, please try again";
 		}

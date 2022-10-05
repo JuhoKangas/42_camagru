@@ -277,4 +277,18 @@ function post_comment($comment, $user_id, $image_id) {
   $conn = null;
 }
 
+function fetch_user_webcam_images($user_id) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT img_name FROM user_images WHERE uploader_id = :id AND webcam = 1 ORDER BY id DESC");
+    $stmt->bindParam(':id', $user_id);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
 ?>
