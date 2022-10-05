@@ -627,6 +627,7 @@ footer {
 
 .preview {
   position: relative;
+  display: flex;
 }
 
 .preview #canvas {
@@ -722,6 +723,10 @@ footer {
   padding: 1rem;
   margin: 2rem auto 0;
   width: 75%;
+}
+
+#picture-form {
+  display: flex;
 }
 
 .pagination {

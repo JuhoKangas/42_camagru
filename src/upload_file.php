@@ -8,8 +8,8 @@
 
   $imgID = uniqid("img_");
   $uploadDir = "../img/uploads/";
-  if ($_FILES) {
-    $fileType = strtolower(pathinfo($_FILES['fileToUpload']['name'],PATHINFO_EXTENSION));
+  if (isset($_FILES['fileToUpload'])) {
+    $fileType = strtolower(pathinfo($_FILES['fileToUpload']['full_path'], PATHINFO_EXTENSION));
     $filename = "$imgID.$fileType";
     $targetFile = $uploadDir . $filename;
   }
@@ -37,38 +37,36 @@
       $maxDim = 800;
       $file_name = $_FILES['fileToUpload']['tmp_name'];
       list($width, $height, $type, $attr) = getimagesize($file_name);
-      if ($width > $maxDim || $height > $maxDim) {
-          $ratio = $width/$height;
-          if( $ratio > 1) {
-              $new_width = $maxDim;
-              $new_height = $maxDim/$ratio;
-          } else {
-              $new_width = $maxDim*$ratio;
-              $new_height = $maxDim;
-          }
-        $src = imagecreatefromstring(file_get_contents($file_name));
-        $dst = imagecreatetruecolor($new_width, $new_height);
-        imagecopyresampled($dst, $src, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-        imagedestroy($src);
 
-        $stickers = $_POST['canvas_picture'];
-        if ($stickers) {
-          list($type, $data_url) = explode(';', $stickers);
-          list(, $data_url) = explode(',', $data_url);
-          $decoded_url = base64_decode($data_url);
-          $src = imagecreatefromstring($decoded_url);
-          imagecopy($dst, $src, 0, 0, 0, 0, $new_width, $new_height);
-        }
-
-        if ($fileType === 'jpg' || $filetype === 'jpeg') {
-          imagejpeg($dst, $targetFile);
-        } else if ($fileType === 'png') {
-          imagepng($dst, $targetFile);
-        }
-        imagedestroy($dst);
+      $ratio = $width/$height;
+      if( $ratio > 1) {
+          $new_width = $maxDim;
+          $new_height = $maxDim/$ratio;
       } else {
-        move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
+          $new_width = $maxDim*$ratio;
+          $new_height = $maxDim;
       }
+      $src = imagecreatefromstring(file_get_contents($file_name));
+      $dst = imagecreatetruecolor($new_width, $new_height);
+      imagecopyresampled($dst, $src, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+      imagedestroy($src);
+
+      $stickers = $_POST['canvas_picture'];
+      if ($stickers) {
+        list($type, $data_url) = explode(';', $stickers);
+        list(, $data_url) = explode(',', $data_url);
+        $decoded_url = base64_decode($data_url);
+        $src = imagecreatefromstring($decoded_url);
+        imagecopy($dst, $src, 0, 0, 0, 0, $new_width, $new_height);
+      }
+
+      if ($fileType === 'jpg' || $filetype === 'jpeg') {
+        imagejpeg($dst, $targetFile);
+      } else if ($fileType === 'png') {
+        imagepng($dst, $targetFile);
+      }
+      imagedestroy($dst);
+      
       if (!empty($_POST['description'])) {
         $description = $_POST['description'];
       }
@@ -165,7 +163,6 @@ file_input.onchange = () => {
 		// We have to give it some time to think
 		setTimeout(() => {
 			let maxDim = 1000;
-			if (picture.width > maxDim || picture.height > maxDim) {
 					let ratio = picture.width/picture.height;
 					if( ratio > 1) {
 							picture.width = maxDim;
@@ -178,7 +175,6 @@ file_input.onchange = () => {
 							canvas.width = maxDim*ratio;
 							canvas.height = maxDim;
 					}
-				}
 		}, 50);
 	}
 }
