@@ -24,7 +24,7 @@ try {
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    `password` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(60) NOT NULL,
     activated BOOLEAN NOT NULL DEFAULT 0,
     notif_stat BOOLEAN NOT NULL DEFAULT 1,
     unique_token VARCHAR(255) NOT NULL,
@@ -42,7 +42,7 @@ try {
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     uploader_id INT(11) NOT NULL,
     img_name VARCHAR(255) NOT NULL,
-    img_desc VARCHAR(255) NOT NULL,
+    img_desc VARCHAR(1600) NOT NULL,
     webcam BOOLEAN NOT NULL,
     upload_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   )";
@@ -69,7 +69,7 @@ try {
 try {
   $sql = "CREATE TABLE IF NOT EXISTS user_comments (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    comment VARCHAR(255) NOT NULL,
+    comment VARCHAR(1600) NOT NULL,
     image_id INT(11) NOT NULL,
     `user_id` INT (11) NOT NULL
   )";
