@@ -534,7 +534,7 @@ footer {
 }
 
 .card-comments-list {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2.5rem;
 }
 
 .card-description {
@@ -555,8 +555,8 @@ footer {
 
 .comment-input {
   width: 100%;
-  font-size: 20px;
-  padding: 5px;
+  font-size: 16px;
+  padding: 0 12px;
   outline: none;
   border: 1px solid #000;
   border-right: none;
