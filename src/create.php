@@ -3,8 +3,11 @@
   require_once("functions.php");
 
   $errMsg = '';
-  if ($_POST) {
-    $email = htmlspecialchars($_POST['email']);
+  if (isset($_POST['submit'])) {
+    if (strlen($_POST['email']) > 254 || strlen($_POST['username']) > 50) {
+      $errMsg = "Username or email is too long";
+    }
+    $email = $_POST['email'];
     $username = htmlspecialchars($_POST['username']);
     $pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
   
@@ -14,6 +17,10 @@
     
     if ($_POST['submit'] === 'OK' && $_POST['pwd'] !== $_POST['pwdAgain']) {
       $errMsg = "Passwords don't match";
+    }
+
+    if (empty($username) || empty($_POST['pwd']) || empty($email)) {
+      $errMsg = "Please fill all fields";
     }
     
     if ($_POST['submit'] === 'OK' && !(usernameAvailable($username))) {
@@ -43,7 +50,7 @@
                   value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>"
                   placeholder="a.honnold@climb.com"
                   required
-                  maxlength="255" />
+                  maxlength="254" />
         </div>
         <div class="control">
           <label for="username">Username</label>
