@@ -30,7 +30,7 @@
 		<h2 class="mt-5 mb-3">Change Email</h2>
 		<form action="settings_handler.php" method="post">
 			<div class="control mt-2">
-				<input class="mb-3" type="text" name="new_email" placeholder="New Email" required>
+				<input class="mb-3" type="email" name="new_email" placeholder="New Email" required>
 				<button class="btn btn-main" type="submit">Submit</button>
 			</div>
 		</form>
