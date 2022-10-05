@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($_SESSION)){
+  session_start();
+}
+
 $DB_DSN = 'mysql:host=localhost;dbname=camagru_db';
 $DB_USER = 'root';
 $DB_PASSWORD = '123123';
@@ -285,6 +289,62 @@ function fetch_user_webcam_images($user_id) {
     $stmt->execute();
 
     return $stmt->fetchAll();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+function can_send_notifications($user_id) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT notif_stat FROM userinfo WHERE id = :id");
+    $stmt->bindParam(':id', $user_id);
+    $stmt->execute();
+    $status = $stmt->fetch();
+
+    return $status['notif_stat'];
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+// Notif_type 1 is commenting picture, 2 is for likes
+function notify_user($image_id, $notif_type, $message = '') {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT uploader_id FROM user_images WHERE id = :id");
+    $stmt->bindParam(':id', $image_id);
+    $stmt->execute();
+    $user_id = $stmt->fetch();
+    $user_id = $user_id['uploader_id'];
+
+    // Find email
+    $stmt = $conn->prepare("SELECT email FROM userinfo WHERE id = :id");
+    $stmt->bindParam(':id', $user_id);
+    $stmt->execute();
+    $email = $stmt->fetch();
+    $email = $email['email'];
+    $username = get_username_by_id($user_id);
+    
+    if (can_send_notifications($user_id)) {
+      if ($notif_type == 1) {
+        $headers = 'From: no-reply@camagru.com';
+        $subject = "Someone commented on your picture!";
+        $commenter = $_SESSION['logged_in_user'];
+        $body = "Hey $username! $commenter said \"$message\" on your picture, go check it out here http://localhost:8080/camagru/src/home.php";
+  
+        mail($email, $subject, $body, $headers);
+      } else if ($notif_type == 2) {
+        $headers = 'From: no-reply@camagru.com';
+        $subject = "Someone liked your picture!";
+        $liker = $_SESSION['logged_in_user'];
+        $body = "Hey $username! $liker liked your picture, go check it out here http://localhost:8080/camagru/src/home.php";
+  
+        mail($email, $subject, $body, $headers);
+      }
+    }
   } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
   }
