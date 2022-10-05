@@ -34,7 +34,7 @@
       echo $errMsg;
     } else {
       // Resize the image before uploading
-      $maxDim = 800;
+      $maxDim = 1000;
       $file_name = $_FILES['fileToUpload']['tmp_name'];
       list($width, $height, $type, $attr) = getimagesize($file_name);
 
