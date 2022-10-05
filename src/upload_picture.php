@@ -11,7 +11,12 @@
 		$sticker1_path = $_POST['sticker1'];
 		$sticker2_path = $_POST['sticker2'];
 		if (!empty($_POST['description'])) {
-			$description = htmlspecialchars($_POST['description']);
+			if (strlen($_POST['description']) <= 255) {
+				$description = htmlspecialchars($_POST['description']);
+			} else {
+				echo "Error: The image description is too long";
+				return;
+			}
 		}
 	
 		if ($data_url) {
@@ -49,7 +54,7 @@
 			imagepng($picture, $target_file);
 			imagedestroy($picture);
 			uploadPicture($_SESSION['user_id'], $filename, $description);
-			header('Location: home.php');
+			// header('Location: home.php');
 		} else {
 			echo "There was a problem uploading your picture, please try again";
 		}

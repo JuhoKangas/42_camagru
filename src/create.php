@@ -42,7 +42,8 @@
                   name="email"
                   value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>"
                   placeholder="a.honnold@climb.com"
-                  required />
+                  required
+                  maxlength="255" />
         </div>
         <div class="control">
           <label for="username">Username</label>
@@ -50,7 +51,9 @@
                   name="username"
                   value="<?php echo isset($_POST['username']) ? $_POST['username'] : '' ?>"
                   placeholder="assblaster69"
-                  required />
+                  required
+                  maxlength="50"
+                  />
         </div>
         <div class="control">
           <label for="pwd">Password</label>
@@ -58,10 +61,11 @@
                   name="pwd"
                   value="<?php echo isset($_POST['pwd']) ? $_POST['pwd'] : '' ?>"
                   placeholder="Pleaseusepassphrase"
-                  required />
+                  required 
+                  maxlength="50"/>
                   <div class="sub-text text-center px-4 py-3">
                     <!-- 16 character long password would take approximately 1511681941489 years to brute force so it's safe -->
-                    <p>Password must be at least 16 characters long and has to contain letters and numbers</p>
+                    <p>Password must be between 16 and 50 characters long and has to contain letters and numbers</p>
                   </div>
         </div>
         <div class="control">
