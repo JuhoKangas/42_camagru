@@ -616,6 +616,11 @@ footer {
   cursor: pointer;
 }
 
+.stickers img:active {
+  background-color: rgb(219, 219, 219);
+  cursor: pointer;
+}
+
 .web-photo {
   display: flex;
   padding: 2rem 0;
@@ -727,6 +732,15 @@ footer {
 
 #picture-form {
   display: flex;
+}
+
+.active {
+  background-color: rgb(244, 244, 244);
+}
+
+#picture-preview {
+  max-width: 95%;
+  margin: 0 auto;
 }
 
 .pagination {

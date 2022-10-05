@@ -82,7 +82,9 @@
 <div class="content">
 
   <div class="webcam-container">
-    
+  
+    <p>Select a sticker (choose wisely as you can't unselect a sticker)</p>
+
     <div class="stickers">
       <img class="sticker" src="../img/stickers/bee_sticker.png" alt="" id="sticker1">
       <img class="sticker" src="../img/stickers/best-mom_sticker.png" alt="" id="sticker2">
@@ -94,18 +96,19 @@
     <form class="d-flex d-column align-center" action="upload_file.php" method="post" enctype="multipart/form-data">
       <input id="canvas-picture" type="hidden" name="canvas_picture" value="">
       <div class="preview">
-        <img id="picture">
-        <canvas id="canvas" width="0" height="0"></canvas>
+        <img class="d-none" id="picture">
+        <img id="picture-preview">
+        <canvas class="d-none" id="canvas" width="0" height="0"></canvas>
       </div>
-      <input accept="image/*" type="file" name="fileToUpload" id="fileToUpload" required >
+      <input class="mt-4" accept="image/*" type="file" name="fileToUpload" id="fileToUpload" required >
       <input type="text" name="description" id="picture-description" placeholder="Customize the image description" required>
       <br>
       <input class="btn btn-main my-4" name="submit" type="submit" value="Submit">
       <button class="btn mt-4 d-none" id="clear-img">Clear Selection</button>
     </form>
+    <a href="upload_webcam.php">upload with webcam</a>
   </div>
 
-	<a href="upload_webcam.php">upload with webcam</a>
 
 </div>
 
@@ -115,6 +118,7 @@ const stop_button = document.querySelector("#clear-img");
 const canvas_picture = document.querySelector('#canvas-picture');
 const file_input = document.querySelector("#fileToUpload");
 const picture = document.querySelector("#picture");
+const picture_preview = document.querySelector("#picture-preview");
 
 const sticker = document.querySelectorAll(".sticker");
 
@@ -122,6 +126,7 @@ for (let i=0; i<sticker.length; i++) {
 	sticker[i].addEventListener('click', e => {
     if (picture.src != "") {
       addSticker(e.target.id);
+      e.target.classList.add("active");
     }
 	})
 }
@@ -159,6 +164,7 @@ file_input.onchange = () => {
 	const [file] = file_input.files;
 	if (file) {
 		picture.src = URL.createObjectURL(file);
+		picture_preview.src = URL.createObjectURL(file);
 		
 		// We have to give it some time to think
 		setTimeout(() => {
