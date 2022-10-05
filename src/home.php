@@ -64,14 +64,14 @@
               ?>
               <div class="comment">
                 <p class="card-username"><?php echo(get_username_by_id($comment['user_id'])) ?></p>
-                <p><?php echo($comment['comment']) ?></p>
+                <p class="image-comment"><?php echo($comment['comment']) ?></p>
               </div>
               <?php endforeach; ?>
             </div>
             <?php if (isset($_SESSION['logged_in_user'])): ?>
               <form id="comment_<?php echo $image['id'] ?>" action="add_comment.php" method="post">
                 <div class="card-comment">
-                  <input class="comment-input" type="text" name="post_comment" id="post_comment" value="">
+                  <input class="comment-input" type="text" name="post_comment" id="post_comment" placeholder="Max 255 characters" maxlength="255" value="">
                   <input type="hidden" name="image_id" value="<?php echo($image['id']) ?>">
                   <img data="<?php echo $image['id'] ?>" class="comment-icon" src="../img/icons/comment_icon.svg" alt="comment post">
                 </div>
