@@ -60,7 +60,7 @@
         imagecopy($dst, $src, 0, 0, 0, 0, $new_width, $new_height);
       }
 
-      if ($fileType === 'jpg' || $filetype === 'jpeg') {
+      if ($fileType === 'jpg' || $fileType === 'jpeg') {
         imagejpeg($dst, $targetFile);
       } else if ($fileType === 'png') {
         imagepng($dst, $targetFile);
