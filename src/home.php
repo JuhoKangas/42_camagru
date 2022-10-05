@@ -15,8 +15,14 @@
     $page = 1;
     $spage = 1;
   } else {
-    $page = $_GET['page'];
-    $spage = $_GET['page'];
+    if ($_GET['page'] < 1) {
+      header('location: home.php');
+    } else if ($_GET['page'] > $number_of_pages) {
+      header('location: home.php');
+    } else {
+      $page = $_GET['page'];
+      $spage = $_GET['page'];
+    }
   }
 
   $first_post = ($page - 1) * $results_per_page;
