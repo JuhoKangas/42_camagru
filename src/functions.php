@@ -20,7 +20,7 @@ function connect(){
 }
 
 function send_activation_email (string $email, string $unique_token) {
-  $activation_link = "http://localhost:8080/src/auth.php?email=$email&unique_token=$unique_token";
+  $activation_link = "http://localhost:8080/camagru/src/auth.php?email=$email&unique_token=$unique_token";
 
   $subject = "Please activate your account";
   $body = "Hey! Please follow this link to verify your email! " . PHP_EOL . $activation_link;
@@ -43,7 +43,7 @@ function createUser(string $username, string $email, string $pwd): void {
 
     $stmt->execute();
 
-    // send_activation_email($email, $unique_token);
+    send_activation_email($email, $unique_token);
 
   } catch(PDOException $e){
     echo "Error: " . $e->getMessage();
