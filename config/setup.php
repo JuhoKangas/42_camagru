@@ -23,7 +23,7 @@ try {
   $sql = "CREATE TABLE IF NOT EXISTS userinfo(
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(500) NOT NULL,
-    email VARCHAR(1600) NOT NULL,
+    email VARCHAR(255) NOT NULL,
     `password` VARCHAR(60) NOT NULL,
     activated BOOLEAN NOT NULL DEFAULT 0,
     notif_stat BOOLEAN NOT NULL DEFAULT 1,
