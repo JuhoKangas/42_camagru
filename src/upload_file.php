@@ -4,6 +4,7 @@
 
   if (empty($_SESSION['logged_in_user'])) {
     header("location: home.php");
+    exit;
   }
 
   $imgID = uniqid("img_");

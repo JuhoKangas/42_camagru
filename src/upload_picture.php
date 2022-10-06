@@ -2,6 +2,11 @@
 	require_once("includes/header.php");
 	require_once("functions.php");
 
+	if ($_SESSION['logged_in_user'] == '') {
+		header("location: home.php");
+		exit;
+	}
+
 	if (isset($_POST['canvas_picture'])) {
 		$data_url = $_POST['canvas_picture'];
 		$target_dir = "../img/uploads/";

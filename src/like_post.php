@@ -10,5 +10,9 @@
 		unlike_post($_POST['unlike'], $_SESSION['user_id']);
 	}
 
-	header("location: " . $_SERVER['HTTP_REFERER']);
+	if (isset($_SERVER['HTTP_REFERER'])) {
+		header("location: " . $_SERVER['HTTP_REFERER']);
+	} else {
+		header("location: home.php");
+	}
 ?>

@@ -4,6 +4,7 @@
 
   if (empty($_SESSION['logged_in_user'])) {
     header("location: home.php");
+    exit;
   }
 
   $user_images = fetch_user_webcam_images($_SESSION['user_id']);

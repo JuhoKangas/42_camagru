@@ -2,9 +2,13 @@
   require_once("includes/header.php");
   require_once("functions.php");
   
+    if (!(isset($_GET['email']) && isset($_GET['unique_token']))) {
+      header('location: home.php');
+      exit;
+    }
+  
   $email = $_GET['email'];
   $unique_token = $_GET['unique_token'];
-
 ?>
 
 <?php if(activate_user($email, $unique_token)): ?>

@@ -2,6 +2,11 @@
 	session_start();
 	require_once("functions.php");
 
+	if ($_SESSION['logged_in_user'] == '') {
+		header("location: home.php");
+		exit;
+	}
+
 	$message = '';
 
 	if (isset($_POST['email_notif'])) {
