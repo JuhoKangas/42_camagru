@@ -137,19 +137,19 @@ const addSticker = (sticker) => {
 
 	switch (sticker) {
 		case "sticker1":
-			ctx.drawImage(selectedSticker, canvas.width / 4, canvas.height / 2, selectedSticker.width, selectedSticker.height)
+			ctx.drawImage(selectedSticker, (canvas.width / 4) * 1, (canvas.height / 4) * 3, selectedSticker.width, selectedSticker.height)
 			break;
 		case "sticker2":
-			ctx.drawImage(selectedSticker,canvas.width / 2, canvas.height / 8, selectedSticker.width, selectedSticker.height)
+			ctx.drawImage(selectedSticker, (canvas.width / 4) * 2, (canvas.height / 4) * 2, selectedSticker.width, selectedSticker.height)
 			break;
 		case "sticker3":
-			ctx.drawImage(selectedSticker, canvas.width / 3, canvas.height / 9, selectedSticker.width, selectedSticker.height)
+			ctx.drawImage(selectedSticker, (canvas.width / 4) * 3, (canvas.height / 4) * 1, selectedSticker.width, selectedSticker.height)
 			break;
 		case "sticker4":
-			ctx.drawImage(selectedSticker, canvas.width / 4, canvas.height / 5, selectedSticker.width, selectedSticker.height)
+			ctx.drawImage(selectedSticker, (canvas.width / 4) * 3, (canvas.height / 4) * 3, selectedSticker.width, selectedSticker.height)
 			break;
 		case "sticker5":
-			ctx.drawImage(selectedSticker, canvas.width / 5, canvas.height / 4, selectedSticker.width, selectedSticker.height)
+			ctx.drawImage(selectedSticker, (canvas.width / 4) * 1, (canvas.height / 4) * 1, selectedSticker.width, selectedSticker.height)
 			break;
 	
 		default:

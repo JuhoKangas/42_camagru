@@ -351,4 +351,47 @@ function notify_user($image_id, $notif_type, $message = '') {
   $conn = null;
 }
 
+function is_valid_token($token) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT unique_token, username, id FROM userinfo WHERE unique_token = :token");
+    $stmt->bindParam(':token', $token);
+    $stmt->execute();
+    if ($user = $stmt->fetch()) {
+      return $user;
+    } else {
+      return false;
+    }
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+function get_user_by_email($email) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT * FROM userinfo WHERE email = :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+
+    return $stmt->fetch();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+function send_password_reset($email) {
+  $user = get_user_by_email($email);
+  
+  $headers = 'From: no-reply@camagru.com';
+  $subject = "Your password reset link!";
+  $username = $user['username'];
+  $token = $user['unique_token'];
+  $body = "Hey $username! You can change your password here: http://localhost:8080/camagru/src/change_password.php?unique_token=$token";
+  
+  mail($email, $subject, $body, $headers);
+}
+
 ?>

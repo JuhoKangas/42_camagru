@@ -722,6 +722,12 @@ footer {
 	margin-bottom: 1rem;
 }
 
+/* FORGOT PASSWORD */
+
+.forgot-password {
+	width: 40%;
+}
+
 #picture-description {
 	border: 2px solid black;
 	border-radius: 4px;
@@ -797,6 +803,10 @@ footer {
 	.navbar {
 		justify-content: space-between;
 		padding: 0 5%;
+	}
+
+	.forgot-password {
+		width: 80%;
 	}
 }
 

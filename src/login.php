@@ -29,6 +29,7 @@
     <div class="control">
       <label for="pwd">Password</label>
       <input type="password" name="pwd" value="<?php echo isset($_POST['pwd']) ? $_POST['pwd'] : '' ?>" placeholder="Password" required />
+      <a class="sub-text ml-4 mt-2" href="forgot_password.php">Forgot password?</a>
       <?php if($loginErr != ''): ?>
         <p class="sub-text text-center text-warning mt-4 px-4"><?php echo $loginErr ?></p>
       <?php endif; ?>
