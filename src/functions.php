@@ -394,4 +394,34 @@ function send_password_reset($email) {
   mail($email, $subject, $body, $headers);
 }
 
+function fetch_all_user_images($username) {
+  $user = find_by_username($username);
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT * FROM user_images WHERE uploader_id = :user_id");
+    $stmt->bindParam(":user_id", $user['id']);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+function fetch_user_images($username, $first, $amount) {
+  $user = find_by_username($username);
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT * FROM user_images WHERE uploader_id = :user_id ORDER BY id DESC LIMIT $first, $amount");
+    $stmt->bindParam('user_id', $user['id']);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
 ?>

@@ -25,7 +25,7 @@
           <div class="buttons-middle">
             <a href="home.php"><button class="btn btn-icon"><img src="../img/icons/home.svg" alt=""></button></a>
             <a href="upload_webcam.php"><button class="btn btn-icon"><img src="../img/icons/add_img.svg" alt=""></button></a>
-            <a href="#"><button class="btn btn-icon"><img src="../img/icons/profile.svg" alt=""></button></a>
+            <a href="profile.php"><button class="btn btn-icon"><img src="../img/icons/profile.svg" alt=""></button></a>
           </div>
           <div class="buttons-right">
             <a href="settings.php"><button class="btn btn-icon"><img src="../img/icons/settings.svg" alt=""></button></a>
