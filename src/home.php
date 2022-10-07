@@ -30,6 +30,13 @@
 
     <div class="cards-container px-3">
 
+    <?php if (empty($_SESSION['logged_in_user'])): ?>
+      <div class="hero-text">
+        <h1 class="title">Welcome to Camagru, the new and simpler photo sharing service</h1>
+        <p><a href="create.php">Sign up</a> to start posting your own photos with state of the art stickers</p>
+      </div>
+    <?php endif; ?>
+
     <?php foreach($images as $image): ?>
       <!-- HTML -->
 

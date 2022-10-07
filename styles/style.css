@@ -487,6 +487,14 @@ footer {
 	border-radius: 2px;
 }
 
+/* HERO SECTION */
+
+.hero-text {
+	max-width: 900px;
+	margin: 0 auto 7rem;
+	padding-right: 13rem;
+}
+
 /* CARDS */
 
 .card {
@@ -826,5 +834,11 @@ footer {
 
 	.webcam-container {
 		margin: 0 1%;
+	}
+
+	.hero-text {
+		text-align: center;
+		padding-right: 0;
+		margin-bottom: 3rem;
 	}
 }
