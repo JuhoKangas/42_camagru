@@ -4,7 +4,7 @@ require_once("functions.php");
 
 $email_sent = false;
 
-if (isset($_POST['email'])) {
+if (!empty($_POST['email'])) {
     send_password_reset($_POST['email']);
     $email_sent = true;
 }
@@ -18,7 +18,7 @@ if (isset($_POST['email'])) {
         <h2>Please give your email and we'll send you a unique code to change the password</h2>
         <form class="forgot-password" action="forgot_password.php" method="post">
             <div class="control d-flex d-column my-4">
-                <input class="mb-3" type="email" name="email" id="" placeholder="Your email">
+                <input class="mb-3" type="email" name="email" id="" placeholder="Your email" required>
                 <button class="btn btn-main btn-big mt-5" type="submit">Send email</button>
             </div>
         </form>

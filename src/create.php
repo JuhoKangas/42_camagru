@@ -47,7 +47,7 @@
           <label for="email">Email</label>
           <input type="email"
                   name="email"
-                  value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>"
+                  value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>"
                   placeholder="a.honnold@climb.com"
                   required
                   maxlength="254" />
@@ -56,7 +56,7 @@
           <label for="username">Username</label>
           <input type="text"
                   name="username"
-                  value="<?php echo isset($_POST['username']) ? $_POST['username'] : '' ?>"
+                  value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '' ?>"
                   placeholder="assblaster69"
                   required
                   maxlength="50"

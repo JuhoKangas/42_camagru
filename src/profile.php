@@ -33,7 +33,7 @@
   
 
     <div class="hero-text">
-        <h1 class="title">This is your profile page and here you an see all your pictures</h1>
+        <h1 class="title">This is your profile page and here you can see all your pictures</h1>
         <p>We call this 'The better feed' as you don't have to watch pictures of lesser people</p>
     </div>
   
