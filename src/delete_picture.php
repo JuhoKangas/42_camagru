@@ -7,8 +7,9 @@
 
         try {
             $conn = connect();
-            $stmt = $conn->prepare("DELETE FROM user_images WHERE id = :img_id");
+            $stmt = $conn->prepare("DELETE FROM user_images WHERE id = :img_id AND uploader_id = :user_id");
             $stmt->bindParam(':img_id', $img_id);
+            $stmt->bindParam(':user_id', $_SESSION['logged_in_user']);
             $stmt->execute();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
