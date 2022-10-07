@@ -16,7 +16,7 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" />
       <link rel="stylesheet" href="../styles/style.css" />
-      <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+      <link rel="icon" type="image/x-icon" href="../img/uploads/favicon.ico">
     </head>
     <body>
       <nav>
@@ -45,7 +45,7 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" />
       <link rel="stylesheet" href="../styles/style.css" />
-      <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+      <link rel="icon" type="image/x-icon" href="../img/uploads/favicon.ico">
     </head>
     <body>
       <nav>
