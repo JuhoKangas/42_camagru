@@ -51,8 +51,8 @@
 		<h2 class="mt-5 mb-3">Change Password</h2>
 		<form action="settings_handler.php" method="post">
 			<div class="control mt-2">
-				<input class="mb-3" type="password" name="old_password" placeholder="Old password" maxlength="50" required>
-				<input class="mb-3" type="password" name="new_password" placeholder="New password" maxlength="50" required>
+				<input class="mb-3" type="password" name="old_password" placeholder="Old password" minlength="16" maxlength="50" required>
+				<input class="mb-3" type="password" name="new_password" placeholder="New password" minlength="16" maxlength="50" required>
 				<button class="btn btn-main" type="submit">Submit</button>
 			</div>
 		</form>

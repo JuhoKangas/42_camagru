@@ -68,7 +68,8 @@
                   name="pwd"
                   value="<?php echo isset($_POST['pwd']) ? $_POST['pwd'] : '' ?>"
                   placeholder="Pleaseusepassphrase"
-                  required 
+                  required
+                  minlength="16"
                   maxlength="50"/>
                   <div class="sub-text text-center px-4 py-3">
                     <!-- 16 character long password would take approximately 1511681941489 years to brute force so it's safe -->
@@ -81,7 +82,9 @@
                   name="pwdAgain"
                   value="<?php echo isset($_POST['pwdAgain']) ? $_POST['pwdAgain'] : '' ?>"
                   placeholder="Password again"
-                  required />
+                  required 
+                  minlength="16"
+                  maxlength="50"/>
         </div>
         <?php if($errMsg): ?>
           <small class="sub-text text-center text-warning mt-4 px-4"><?php echo $errMsg ?></small>
