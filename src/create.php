@@ -70,7 +70,9 @@
                   placeholder="Pleaseusepassphrase"
                   required
                   minlength="16"
-                  maxlength="50"/>
+                  maxlength="50"
+                  pattern="^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z]{16,50}$"
+                  />
                   <div class="sub-text text-center px-4 py-3">
                     <!-- 16 character long password would take approximately 1511681941489 years to brute force so it's safe -->
                     <p>Password must be between 16 and 50 characters long and has to contain letters and numbers</p>
@@ -82,7 +84,8 @@
                   name="pwdAgain"
                   value="<?php echo isset($_POST['pwdAgain']) ? $_POST['pwdAgain'] : '' ?>"
                   placeholder="Password again"
-                  required 
+                  required
+                  pattern="^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z]{16,50}$"
                   minlength="16"
                   maxlength="50"/>
         </div>
