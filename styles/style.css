@@ -636,6 +636,10 @@ footer {
 	gap: 3rem;
 }
 
+.delete-button {
+	cursor: pointer;
+}
+
 /* IMAGE UPLOAD */
 
 .preview {

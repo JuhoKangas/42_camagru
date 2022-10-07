@@ -44,6 +44,10 @@
           <div class="card-primary">
             <div class="card-header">
               <p class="card-username"><?php echo(get_username_by_id($image['uploader_id'])) ?></p>
+              <form action="delete_picture.php" method="post">
+                <input type="hidden" name="delete_picture" value="<?php echo $image['id']?> ">
+                <button type="submit" class="btn delete-button">Delete Picture</button>
+              </form>
               <p class="card-time"><?php echo(date_format(date_create($image['upload_time']), "M jS H:i")) ?></p>
             </div>
             <div class="card-img">
@@ -79,7 +83,6 @@
                 </div>
                 <?php endforeach; ?>
               </div>
-              <?php if (isset($_SESSION['logged_in_user'])): ?>
                 <form id="comment_<?php echo $image['id'] ?>" action="add_comment.php" method="post">
                   <div class="card-comment">
                     <input class="comment-input" type="text" name="post_comment" id="post_comment" placeholder="Max 255 characters" maxlength="255" value="">
@@ -87,7 +90,6 @@
                     <img data="<?php echo $image['id'] ?>" class="comment-icon" src="../img/icons/comment_icon.svg" alt="comment post">
                   </div>
                 </form>
-              <?php endif; ?>
   
             </div>
           </div>
