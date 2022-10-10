@@ -7,7 +7,12 @@
 		exit;
 	}
 
-	if (isset($_POST['canvas_picture'])) {
+	if (empty($_POST['sticker1']) && empty($_POST['sticker2'])) {
+		echo "Error: You can't upload a picture without stickers";
+		exit;
+	}
+
+	if (!empty($_POST['canvas_picture'])) {
 		$data_url = $_POST['canvas_picture'];
 		$target_dir = "../img/uploads/";
 		$img_id = uniqid("img_");
@@ -20,7 +25,7 @@
 				$description = htmlspecialchars($_POST['description']);
 			} else {
 				echo "Error: The image description is too long";
-				return;
+				exit;
 			}
 		}
 	
@@ -63,6 +68,8 @@
 		} else {
 			echo "There was a problem uploading your picture, please try again";
 		}
+	} else {
+		echo "There was a problem uploading your picture, please try again";
 	}
 ?>
 

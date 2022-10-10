@@ -424,4 +424,35 @@ function fetch_user_images($username, $first, $amount) {
   $conn = null;
 }
 
+function get_img_path_by_id($id) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT img_name FROM user_images WHERE id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $path = $stmt->fetch();
+    return $path['img_name'];
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
+function img_by_user($img_id, $user_id) {
+  try {
+    $conn = connect();
+    $stmt = $conn->prepare("SELECT uploader_id FROM user_images WHERE id = :id AND uploader_id = :user_id");
+    $stmt->bindParam(':id', $img_id);
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
+    if ($stmt->fetch()) {
+      return true;
+    }
+    return false;
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+  $conn = null;
+}
+
 ?>

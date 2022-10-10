@@ -4,7 +4,11 @@
   
   $loginErr = '';
 
-  if (isset($_POST['submit'])) {
+  if (isset($_POST['submit']) && (empty($_POST['username']) || empty($_POST['pwd']))) {
+    $loginErr = 'Please fill in all fields';
+  }
+
+  if ($loginErr == '' && isset($_POST['submit'])) {
     if (find_by_username($_POST['username']) && !user_active($_POST['username'])) {
       $loginErr = 'This account has not yet been activated, please check your email!';
     } else if (login_user($_POST['username'], $_POST['pwd'])) {

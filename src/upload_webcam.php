@@ -52,7 +52,7 @@
         <?php endforeach; ?>
       </div>
     </div>
-    <a href="upload_file.php">Are you poor and don't have a webcam? Upload from files here</a>
+    <a style="width: fit-content;" href="upload_file.php">Upload from files here!</a>
   </div>
 </div>
 <script>

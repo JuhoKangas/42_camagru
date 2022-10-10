@@ -2,8 +2,12 @@
     session_start();
     require_once("functions.php");
 
-    if (isset($_POST['delete_picture'])) {
+    if (isset($_POST['delete_picture']) && !empty($_POST['delete_picture'])) {
         $img_id = $_POST['delete_picture'];
+        
+        if (img_by_user($img_id, $_SESSION['user_id'])) {
+            unlink("../img/uploads/" . get_img_path_by_id($img_id));
+        }
 
         try {
             $conn = connect();

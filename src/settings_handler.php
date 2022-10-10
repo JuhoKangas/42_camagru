@@ -24,7 +24,7 @@
 		$message = "Your email notification status was updated";
 	}
 	
-	if (isset($_POST['new_email'])) {
+	if (isset($_POST['new_email']) && !empty($_POST['new_email'])) {
 		if (strlen($_POST['new_email']) > 255) {
 			$message = "email is too long, maxlength is 255";
 		} else {
@@ -43,7 +43,7 @@
 		}
 	}
 	
-	if (isset($_POST['new_username'])) {
+	if (isset($_POST['new_username']) && !empty($_POST['new_username'])) {
 		if (strlen($_POST['new_username']) > 50) {
 			$message = "Your username is too long, maximum length is 50 characters";
 		} else {

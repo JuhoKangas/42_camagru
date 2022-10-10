@@ -30,6 +30,20 @@
       $errMsg = "Wrong filetype, only jpg/jpeg/png allowed";
       $uploadOk = 0;
     }
+
+    if (empty($_POST['description'])) {
+      $uploadOk = 0;
+      $errMsg = "Description is mandatory";
+    } 
+
+    if (!empty($_POST['description'])) {
+      if (strlen($_POST['description']) < 255) {
+        $description = htmlspecialchars($_POST['description']);
+      } else {
+        $uploadOk = 0;
+        $errMsg = "Image description is too long";
+      }
+    }
   
     if($uploadOk === 0) {
       echo $errMsg;
@@ -68,9 +82,6 @@
       }
       imagedestroy($dst);
       
-      if (!empty($_POST['description'])) {
-        $description = $_POST['description'];
-      }
       uploadPicture($_SESSION['user_id'], $filename, $description, 0);
       header("location: home.php");
     }
@@ -102,12 +113,12 @@
         <canvas class="d-none" id="canvas" width="0" height="0"></canvas>
       </div>
       <input class="mt-4" accept="image/*" type="file" name="fileToUpload" id="fileToUpload" required >
-      <input type="text" name="description" id="picture-description" placeholder="Customize the image description" required>
+      <input type="text" name="description" id="picture-description" placeholder="Max. 255 characters" maxlength="255" required>
       <br>
       <input class="btn btn-main my-4" name="submit" type="submit" value="Submit">
       <button class="btn mt-4 d-none" id="clear-img">Clear Selection</button>
     </form>
-    <a href="upload_webcam.php">upload with webcam</a>
+    <a style="width: fit-content;" href="upload_webcam.php">Upload with webcam!</a>
   </div>
 
 
