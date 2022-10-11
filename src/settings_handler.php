@@ -32,7 +32,7 @@
 			try {
 				$conn = connect();
 				$stmt = $conn->prepare("UPDATE userinfo SET email = :email WHERE id = :id");
-				$stmt->bindParam(':email', $email);
+				$stmt->bindParam(':email', $_POST['new_email']);
 				$stmt->bindParam(':id', $_SESSION['user_id']);
 				$stmt->execute();
 			} catch (PDOException $e) {
