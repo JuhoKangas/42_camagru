@@ -45,7 +45,7 @@
             <div class="card-header">
               <p class="card-username"><?php echo(get_username_by_id($image['uploader_id'])) ?></p>
               <form action="delete_picture.php" method="post">
-                <input type="hidden" name="delete_picture" value="<?php echo $image['id']?> ">
+                <input type="hidden" name="delete_picture" value="<?php echo $image['id']?>">
                 <button type="submit" class="btn delete-button">Delete Picture</button>
               </form>
               <p class="card-time"><?php echo(date_format(date_create($image['upload_time']), "M jS H:i")) ?></p>

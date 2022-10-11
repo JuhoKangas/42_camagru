@@ -18,8 +18,12 @@
 		$img_id = uniqid("img_");
 		$filename = $img_id . '.png';
 		$target_file = $target_dir . $filename;
-		$sticker1_path = $_POST['sticker1'];
-		$sticker2_path = $_POST['sticker2'];
+		if (isset($_POST['sticker1'])) {
+			$sticker1_path = $_POST['sticker1'];
+		}
+		if (isset($_POST['sticker2'])) {
+			$sticker2_path = $_POST['sticker2'];
+		}
 		if (!empty($_POST['description'])) {
 			if (strlen($_POST['description']) <= 255) {
 				$description = htmlspecialchars($_POST['description']);
@@ -27,6 +31,8 @@
 				echo "Error: The image description is too long";
 				exit;
 			}
+		} else {
+			$description = '';
 		}
 	
 		if ($data_url) {

@@ -142,7 +142,7 @@ function activate_user($email, $unique_token) {
   $conn = null;
 }
 
-function uploadPicture(int $user_id, string $img_path, string $img_desc, int $webcam = 1) {
+function uploadPicture(int $user_id, string $img_path, string $img_desc = "I forgot a description", int $webcam = 1) {
   try {
     $conn = connect();
     $stmt = $conn->prepare("INSERT INTO user_images (uploader_id, img_name, img_desc, webcam) VALUES (:uploader_id, :img_name, :img_desc, :webcam)");

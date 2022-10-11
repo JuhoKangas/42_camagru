@@ -9,13 +9,13 @@
 
   $imgID = uniqid("img_");
   $uploadDir = "../img/uploads/";
+  $uploadOk = 1;
+  $errMsg = "";
   if (isset($_FILES['fileToUpload'])) {
     $fileType = strtolower(pathinfo($_FILES['fileToUpload']['full_path'], PATHINFO_EXTENSION));
     $filename = "$imgID.$fileType";
     $targetFile = $uploadDir . $filename;
   }
-  $uploadOk = 1;
-  $errMsg = "";
 
   if(isset($_POST['submit']) && !empty($_FILES["fileToUpload"]["tmp_name"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -66,7 +66,11 @@
       imagecopyresampled($dst, $src, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
       imagedestroy($src);
 
-      $stickers = $_POST['canvas_picture'];
+      if (isset($_POST['canvas_picture'])) {
+        $stickers = $_POST['canvas_picture'];
+      } else {
+        $stickers = '';
+      }
       if ($stickers) {
         list($type, $data_url) = explode(';', $stickers);
         list(, $data_url) = explode(',', $data_url);

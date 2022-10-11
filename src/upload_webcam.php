@@ -41,7 +41,7 @@
           <input id="canvas-picture" type="hidden" name="canvas_picture" value="">
           <input id="c_sticker1" type="hidden" name="sticker1" value="">
           <input id="c_sticker2" type="hidden" name="sticker2" value="">
-          <input type="text" name="description" id="picture-description" maxlength="255" placeholder="Image description in 255 characters">
+          <input type="text" name="description" id="picture-description" maxlength="255" placeholder="Image description in 255 characters" required>
         </form>
       </div>
       
