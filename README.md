@@ -18,7 +18,13 @@ Your profile will be authenticated by emailing you a link containing unique acti
 
 ## How to Install and Run the Project
 
-Easiest way to run the application is running it with MAMP/XAMP. Then in your `apache2/htdocs` directory run `git clone git@github.com:JuhoKangas/42_camagru.git camagru`. The project has to be cloned to directory called `camagru` for it to work correctly. After cloning the project go to [localhost:8080/camagru/index.php](http://localhost:8080/camagru/index.php) to create the database. You might need to change the $DB_PASS in `camagru/config/database.php` and `/camagru/src/functions.php` to the password you have set for your backend.
+Easiest way to run the application is running it with MAMP/XAMP. 
+
+Then in your `apache2/htdocs` directory run `git clone git@github.com:JuhoKangas/42_camagru.git camagru`. The project has to be cloned to directory called `camagru` for it to work correctly. 
+
+After cloning the project go to [localhost:8080/camagru/index.php](http://localhost:8080/camagru/index.php) to create the database. 
+
+You might need to change the $DB_PASS in `camagru/config/database.php` and `/camagru/src/functions.php` to the password you have set for your backend.
  
 ## Previews
 
