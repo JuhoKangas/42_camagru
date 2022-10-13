@@ -1,5 +1,7 @@
 # Camagru
 
+<img width="215" alt="image" src="https://user-images.githubusercontent.com/46278255/195577021-36a5de23-e47d-4d72-b8b5-ce0c04c0497b.png">
+
 
 ## Description
 
